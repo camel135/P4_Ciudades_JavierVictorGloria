@@ -1,4 +1,4 @@
-package com.example.p4_ciudades_javiervictorgloria.data
+package com.example.p4_ciudades_javiervictorgloria.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
