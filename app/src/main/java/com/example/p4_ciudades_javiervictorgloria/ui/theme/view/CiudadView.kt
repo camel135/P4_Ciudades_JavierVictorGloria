@@ -35,15 +35,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
+import com.example.p4_ciudades_javiervictorgloria.model.Ciudad
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-)
 
 @Composable
 
-fun CiudadView(){
+fun CiudadView(
+    viewModel: ViewModelHome
+){
     val lugar = FuenteDatos.lugares[0]
 
     Scaffold(
@@ -126,12 +126,3 @@ fun CiudadView(){
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-)
-
-@Composable
-fun CiudadViewPreview(){
-    CiudadView()
-}
