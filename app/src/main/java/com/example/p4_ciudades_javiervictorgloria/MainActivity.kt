@@ -4,14 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.P4_Ciudades_JavierVictorGloriaTheme
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,29 +15,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             P4_Ciudades_JavierVictorGloriaTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                HomeView(
+                    viewModel = TODO()
+                )
             }
         }
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun previewApp(){
+    HomeView(
+        viewModel = TODO()
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    P4_Ciudades_JavierVictorGloriaTheme {
-        Greeting("Android")
-    }
-}
