@@ -46,9 +46,8 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLu
 fun CiudadView(
     viewModel: ViewModelCiudad
 ){
-    val ciudadActual = viewModel.ciudadSeleccionar
-    //si se elige una ciudad se mostrara los lugares solo de esa ciudad
-    val lugaresCiudadActual= FuenteDatos.lugares.filter { it.ciudad == ciudadActual }
+    val ciudad = viewModel.ciudadSeleccionar
+    val actualCategoria = viewModel.seleccionarCategoria
 
     Scaffold(
         bottomBar = {
