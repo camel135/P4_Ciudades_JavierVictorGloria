@@ -70,6 +70,10 @@
     <string name="desc_temple">Mercado nocturno vibrante con comida callejera y souvenirs.</string>
     <string name="avenue_stars">Avenida de las Estrellas</string>
     <string name="desc_avenue_stars">Homenaje al cine de Hong Kong con estatuas como la de Bruce Lee.</string>
+    <string name="cafeterias">Cafeterías</string>
+    <string name="restaurantes">Restaurantes</string>
+    <string name="centros_comerciales">Centros Comerciales</string>
+    <string name="parques">Parques</string>
 </resources>
 
 
