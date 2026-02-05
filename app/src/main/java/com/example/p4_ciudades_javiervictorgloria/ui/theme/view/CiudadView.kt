@@ -36,15 +36,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Ciudad
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
 
 @Composable
 
 fun CiudadView(
-    viewModel: ViewModelHome
+    viewModel: ViewModelCiudad
 ){
-    val lugar = FuenteDatos.lugares[0]
+    val ciudadActual = viewModel.ciudadSeleccionar
+    //si se elige una ciudad se mostrara los lugares solo de esa ciudad
+    val lugaresCiudadActual= FuenteDatos.lugares.filter { it.ciudad == ciudadActual }
 
     Scaffold(
         bottomBar = {
@@ -108,7 +112,7 @@ fun CiudadView(
                     //la ciudad y el pais
 
                     Text(
-                        text = stringResource(id = lugar.ciudad.name) + ", " + stringResource(id = lugar.ciudad.pais),
+                        text = stringResource(id = ) + ", " + stringResource(id = lugar.ciudad.pais),
                         style= MaterialTheme.typography.bodySmall
                     )
 

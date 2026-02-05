@@ -8,6 +8,7 @@ data class Lugar(
     val ciudad: Ciudad,
     @DrawableRes val imageRes:Int,
     @StringRes val descripcion: Int,
+    val categoria: String //filtrar en pantalla 2
     //Coordenadas para añadir el mapa etc
     //Posible favoritos
 )
