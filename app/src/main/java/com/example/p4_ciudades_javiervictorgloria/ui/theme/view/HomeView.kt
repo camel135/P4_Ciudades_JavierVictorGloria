@@ -5,15 +5,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -54,8 +54,7 @@ fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
     ) {
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+
         ) {
             Column(
 
@@ -64,35 +63,59 @@ fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
 
 
                 ) {
-                    dropDownMenu(viewModelHome)
 
-                    NavigationBarItem(
-                        icon = {
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        dropDownMenu(viewModelHome)
+                        IconButton(onClick = {}) {
+
                             Icon(
                                 imageVector = Icons.Default.Info,
                                 contentDescription = null,
-
-                                )
-                        },
-                        selected = false,
-                        onClick = {
-
+                            )
                         }
+                        IconButton(onClick = {}) {
+
+                            Icon(
+                                imageVector = Icons.Default.Info,
+                                contentDescription = null,
+                            )
+                        }
+                    }
+
+                    /**
+                    NavigationBarItem(
+                    icon = {
+                    Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = null,
+
+                    )
+                    },
+                    selected = false,
+                    onClick = {
+
+                    }
                     )
                     NavigationBarItem(
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.Star,
-                                contentDescription = null,
+                    icon = {
+                    Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = null,
 
-                                )
-                        },
-                        selected = false,
-                        onClick = {
-
-                        }
                     )
+                    },
+                    selected = false,
+                    onClick = {
+
+                    }
+                    )
+                     **/
                 }
+
             }
 
 
@@ -170,7 +193,7 @@ fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
 @Composable
 fun dropDownMenu(viewModelHome: ViewModelHome) {
 
-    Box(modifier = Modifier.padding(16.dp)) {
+    Box() {
 
         IconButton(onClick = { viewModelHome.onDropDownMenuClick() }) {
             Icon(Icons.Default.MoreVert, contentDescription = "More options")
