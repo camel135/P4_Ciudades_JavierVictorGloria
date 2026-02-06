@@ -44,6 +44,7 @@ fun PreviewCiudadView(){
     CiudadView(viewModel = viewModel())
 }
 
+
 @Composable
 fun CiudadView(
     viewModel: ViewModelCiudad
@@ -162,3 +163,4 @@ fun CardLugar(
         }
     }
 }
+
