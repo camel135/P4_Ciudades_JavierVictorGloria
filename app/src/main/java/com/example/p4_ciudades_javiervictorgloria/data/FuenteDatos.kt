@@ -12,7 +12,6 @@ object FuenteDatos {
             continente = R.string.europa,
             imagen = R.drawable.img_rotterdam
         ),
-
         Ciudad(
             name = R.string.algeciras,
             pais = R.string.espana,
