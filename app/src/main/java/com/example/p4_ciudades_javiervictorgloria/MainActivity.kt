@@ -6,8 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.P4_Ciudades_JavierVictorGloriaTheme
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,18 +19,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             P4_Ciudades_JavierVictorGloriaTheme {
                 HomeView(
-                    viewModel = TODO()
+
                 )
             }
         }
     }
 }
 
-@Preview
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
 @Composable
 fun previewApp(){
     HomeView(
-        viewModel = TODO()
+        viewModelHome = viewModel()
     )
 }
 

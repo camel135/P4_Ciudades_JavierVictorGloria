@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -29,12 +30,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 
 
 @Composable
-fun HomeView(
-    viewModel: ViewModelHome
-) {
+fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
     Surface(
         modifier = Modifier
             .padding(top = 24.dp)
@@ -47,12 +48,12 @@ fun HomeView(
             Column(
 
             ) {
-
-
                 NavigationBar(
 
+
                 ) {
-                    dropDownMenu(viewModel)
+
+                    dropDownMenu(viewModelHome)
 
 
                     NavigationBarItem(
@@ -156,17 +157,14 @@ fun HomeView(
 }
 
 @Composable
-fun dropDownMenu(viewModel: ViewModelHome) {
-    Box(
-        modifier = Modifier
-            .padding(16.dp)
-    ) {
-        IconButton(onClick = { viewModel.onDropDownMenuClick() }) {
+fun dropDownMenu(viewModelHome: ViewModelHome) {
+
+        IconButton(onClick = { viewModelHome.onDropDownMenuClick() }) {
             Icon(Icons.Default.MoreVert, contentDescription = "More options")
         }
         DropdownMenu(
-            expanded = viewModel.expanded,
-            onDismissRequest = { viewModel.onDismissMenu() }
+            expanded = viewModelHome.expanded,
+            onDismissRequest = { viewModelHome.onDismissMenu() }
         ) {
             DropdownMenuItem(
                 text = { Text("Option 1") },
@@ -177,6 +175,6 @@ fun dropDownMenu(viewModel: ViewModelHome) {
                 onClick = { /* Do something... */ }
             )
         }
-    }
+
 
 }
