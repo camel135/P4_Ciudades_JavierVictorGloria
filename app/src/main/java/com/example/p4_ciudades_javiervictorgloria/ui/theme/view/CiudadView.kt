@@ -1,131 +1,157 @@
-package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
+package com.example.p4_ciudades_javiervictorgloria.data
 
-import android.media.Image
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
-import com.example.p4_ciudades_javiervictorgloria.model.Ciudad
+import com.example.p4_ciudades_javiervictorgloria.R
+import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
-import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
-import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
 
 @Composable
-
 fun CiudadView(
     viewModel: ViewModelCiudad
 ){
-    val ciudad = viewModel.ciudadSeleccionar
-    val actualCategoria = viewModel.seleccionarCategoria
+    val ciudadActual = viewModel.ciudadSeleccionar
+    val categoriaActual = viewModel.seleccionarCategoria
+    //se filtra esos lugares de la ciudad por la que coincidan
+    val filtrarLugar = FuenteDatos.lugares.filter { it.ciudad == ciudadActual && it.categoria == categoriaActual }
 
-    Scaffold(
-        bottomBar = {
-            NavigationBar{
-                NavigationBarItem(
-                    icon= {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = "Favorito"
-                        )
-                    },
-                    selected = false,
-                    onClick = {}
-                )
-
-                NavigationBarItem(
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Favorite,
-                            contentDescription = "Me gusta"
-                        )
-                    },
-                    selected = false,
-                    onClick = { }
-                )
-            }
-        }
-    ) { paddingValues ->
+    Scaffold{ paddingValues ->
         Column(
-            modifier = Modifier.padding(paddingValues).padding(16.dp).verticalScroll(
-                rememberScrollState()
-            )
+            modifier = Modifier.fillMaxSize().padding(paddingValues)
         ) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            //carrusel
+            Text(
+                text = "Categorias",
+                style= MaterialTheme.typography.titleLarge,
+                modifier= Modifier.padding(start = 15.dp, top = 15.dp, bottom = 6.dp)
+
+            )
+
+            LazyRow(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
+                contentPadding = PaddingValues(horizontal = 14.dp),
+                horizontalArrangement = Arrangement.spacedBy(14.dp)
             ) {
-                Column(
-                    modifier = Modifier.padding(16.dp)
-                ) {
-                    //imagen lugar
-                    Image(
-                        painter = painterResource(id = lugar.imageRes),
-                        contentDescription= null,
-                        modifier= Modifier.fillMaxWidth().height(200.dp),
-                        contentScale = ContentScale.Crop
-
+                //aqui se usa la lista de pair
+                items(FuenteDatos.categoriasOpciones){
+                    (idTexto,idIcono) ->
+                    ItemCarrusel(
+                        idIcono = idIcono,
+                        label= stringResource(id =idTexto),
+                        isSelected= categoriaActual == idTexto,
+                        onClick= {viewModel.actualizarCateg(idTexto)}
                     )
+                }
 
-                    Spacer(modifier= Modifier.height(16.dp))
+            }
 
-                    //nombre lugar
+            //lista lugares
 
-                    Text(
-                        text = stringResource(id = lugar.name),
-                        style = MaterialTheme.typography.headlineSmall
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    //la ciudad y el pais
-
-                    Text(
-                        text = stringResource(id = ) + ", " + stringResource(id = lugar.ciudad.pais),
-                        style= MaterialTheme.typography.bodySmall
-                    )
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    //descripcion
-
-                    Text(
-                        text = stringResource(id = lugar.descripcion),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(15.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                items(filtrarLugar){
+                    lugar ->
+                    CardLugar(lugar)
                 }
             }
         }
     }
+
 }
 
+@Composable
+fun ItemCarrusel(
+    idIcono: Int,
+    label: String,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .width(75.dp)
+            .clickable { onClick() }
+    ) {
+        Surface(
+            modifier = Modifier.size(55.dp),
+            shape = CircleShape,
+            color = if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant
+        ) {
+            Icon(
+                painter = painterResource(id = idIcono),
+                contentDescription = label,
+                modifier = Modifier.padding(15.dp),
+                tint = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            modifier = Modifier.padding(top = 4.dp),
+            maxLines = 1
+        )
+    }
+}
+
+@Composable
+fun CardLugar(
+    lugar: Lugar
+){
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = lugar.imageRes),
+                contentDescription = null,
+                modifier = Modifier.size(60.dp).clip(MaterialTheme.shapes.large),
+                contentScale = ContentScale.Crop
+            )
+
+            Spacer(modifier = Modifier.width(15.dp))
+
+            Text(
+                text = stringResource(id = lugar.name),
+                style= MaterialTheme.typography.titleLarge
+            )
+        }
+    }
+}

@@ -1,5 +1,11 @@
 package com.example.p4_ciudades_javiervictorgloria.data
 // Importar modelos y recuersos
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
 import com.example.p4_ciudades_javiervictorgloria.model.Ciudad
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 import com.example.p4_ciudades_javiervictorgloria.R
@@ -77,5 +83,14 @@ object FuenteDatos {
         Lugar(R.string.star_ferry, ciudades[4], R.drawable.img_ferry, R.string.desc_ferry, R.string.restaurantes),
         Lugar(R.string.temple_street, ciudades[4], R.drawable.img_temple_market, R.string.desc_temple, R.string.centros_comerciales),
         Lugar(R.string.avenue_stars, ciudades[4], R.drawable.img_avenue_stars, R.string.desc_avenue_stars, R.string.parques)
+    )
+
+    val categoriasOpciones = listOf(
+        Pair(R.string.restaurantes, R.drawable.outline_ramen_dining_24),
+        Pair(R.string.parques, R.drawable.outline_forest_24),
+        Pair(R.string.centros_comerciales, R.drawable.outline_shopping_bag_24),
+        Pair(R.string.cafeterias, R.drawable.outline_local_cafe_24)
+
+
     )
 }
