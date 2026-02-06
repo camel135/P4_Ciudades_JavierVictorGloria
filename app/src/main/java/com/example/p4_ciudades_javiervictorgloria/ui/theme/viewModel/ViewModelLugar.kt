@@ -1,3 +1,4 @@
+/**
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel
 
 import androidx.compose.runtime.getValue
@@ -14,3 +15,4 @@ class ViewModelLugar : ViewModel() {
         lugarSeleccionar= nuevoLugar
     }
 }
+ **/
