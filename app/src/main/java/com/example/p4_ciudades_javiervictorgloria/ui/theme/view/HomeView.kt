@@ -1,2 +1,202 @@
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
 
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.p4_ciudades_javiervictorgloria.R
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun previewApp() {
+    HomeView(
+        viewModelHome = viewModel()
+    )
+}
+
+
+@Composable
+fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
+
+
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Column(
+
+            ) {
+                NavigationBar(
+
+
+                ) {
+                    dropDownMenu(viewModelHome)
+
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.Info,
+                                contentDescription = null,
+
+                                )
+                        },
+                        selected = false,
+                        onClick = {
+
+                        }
+                    )
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = null,
+
+                                )
+                        },
+                        selected = false,
+                        onClick = {
+
+                        }
+                    )
+                }
+            }
+
+
+            Column(
+                modifier = Modifier
+                    .weight(7f)
+                    .fillMaxSize(),
+
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Box(
+
+
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.proto_menu),
+                        contentDescription = null,
+                        Modifier.size(200.dp)
+
+                    )
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+
+            ) {
+                NavigationBar() {
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.ArrowBack,
+                                contentDescription = null,
+
+                                )
+                        },
+                        selected = false,
+                        onClick = {
+
+                        }
+                    )
+
+                    NavigationBarItem(
+                        icon = { Text("Ciudad") },
+                        selected = false,
+                        onClick = {
+
+                        }
+                    )
+
+
+                    NavigationBarItem(
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Default.ArrowForward,
+                                contentDescription = null,
+
+                                )
+                        },
+                        selected = false,
+                        onClick = {
+
+                        }
+                    )
+
+                }
+            }
+        }
+    }
+
+
+}
+
+@Composable
+fun dropDownMenu(viewModelHome: ViewModelHome) {
+
+    Box(modifier = Modifier.padding(16.dp)) {
+
+        IconButton(onClick = { viewModelHome.onDropDownMenuClick() }) {
+            Icon(Icons.Default.MoreVert, contentDescription = "More options")
+        }
+
+        DropdownMenu(
+            expanded = viewModelHome.expanded,
+            onDismissRequest = { viewModelHome.onDismissMenu() }
+        ) {
+            DropdownMenuItem(
+                text = { Text("Option 1") },
+                onClick = { viewModelHome.onDismissMenu() }
+            )
+            DropdownMenuItem(
+                text = { Text("Option 2") },
+                onClick = { viewModelHome.onDismissMenu() }
+            )
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
