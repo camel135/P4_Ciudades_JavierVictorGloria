@@ -54,7 +54,7 @@ fun PreviewCiudadView() {
 fun CiudadView(
     viewModelCiudad: ViewModelCiudad = viewModel(),
 ) {
-    
+
     Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->
         Column(
             modifier = Modifier
@@ -182,10 +182,18 @@ fun CardLugar(
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
+
+                Text(
+                    text = stringResource(lugar.categoria),
+                    style = MaterialTheme.typography.labelLarge,
+                    color = Color.Gray,
+                    fontWeight = FontWeight.Bold
+                )
+
                 Text(
                     text = "Pulsa para descubrir más",
                     color = Color(0xFFE91E63),
-                    style = MaterialTheme.typography.labelMedium
+                    style = MaterialTheme.typography.labelSmall
                 )
             }
 
