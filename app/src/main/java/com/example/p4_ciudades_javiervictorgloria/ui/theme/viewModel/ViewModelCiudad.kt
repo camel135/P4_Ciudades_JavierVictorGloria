@@ -12,7 +12,7 @@ import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
             private set
 
         //vamos a empezar por defecto con restaurantes
-        var seleccionarCategoria by mutableStateOf(R.string.restaurantes)
+        var seleccionarCategoria by mutableStateOf(0)
             private set
 
         fun actualizarCateg(nuevaCategoria: Int) {
