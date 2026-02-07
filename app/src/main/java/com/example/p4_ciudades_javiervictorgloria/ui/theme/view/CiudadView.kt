@@ -45,25 +45,15 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCi
 @Preview
 @Composable
 fun PreviewCiudadView() {
-    CiudadView(viewModel = viewModel())
+    CiudadView(viewModelCiudad = viewModel())
 }
 
 
 @Composable
 fun CiudadView(
-    viewModel: ViewModelCiudad
+    viewModelCiudad: ViewModelCiudad = viewModel(),
 ) {
-    val ciudadActual = viewModel.ciudadSeleccionar
-    val categoriaActual = viewModel.seleccionarCategoria
-    //filtramos por ciudad sino por ciudad y categoria
-    val filtrarLugar = FuenteDatos.lugares.filter { lugar ->
-        if (categoriaActual == 0) {
-            lugar.ciudad == ciudadActual
-        } else {
-            lugar.ciudad == ciudadActual && lugar.categoria == categoriaActual
-        }
-    }
-
+    
     Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->
         Column(
             modifier = Modifier
@@ -76,7 +66,7 @@ fun CiudadView(
                     .padding(20.dp)
             ) {
                 Text(
-                    text = stringResource(id = ciudadActual.name),
+                    text = stringResource(id = viewModelCiudad.ciudadSeleccionada.name),
                     style = MaterialTheme.typography.headlineMedium,
                     color = Color(0xFF7B1FA2)
                 )
@@ -109,8 +99,8 @@ fun CiudadView(
                     ItemCarrusel(
                         idIcono = idIcono,
                         // label= stringResource(id =idTexto),
-                        isSelected = categoriaActual == idTexto,
-                        onClick = { viewModel.actualizarCateg(idTexto) }
+                        isSelected = viewModelCiudad.categoriaSeleccionada == idTexto,
+                        onClick = { viewModelCiudad.actualizarCategoria(idTexto) }
                     )
                 }
 
@@ -123,7 +113,7 @@ fun CiudadView(
                 contentPadding = PaddingValues(15.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
-                items(filtrarLugar) { lugar ->
+                items(viewModelCiudad.lugarFiltrado()) { lugar ->
                     CardLugar(lugar)
                 }
             }
@@ -178,7 +168,7 @@ fun CardLugar(
             modifier = Modifier.padding(18.dp),
             verticalAlignment = Alignment.CenterVertically,
 
-        ) {
+            ) {
             Image(
                 painter = painterResource(id = lugar.imageRes),
                 contentDescription = null,
