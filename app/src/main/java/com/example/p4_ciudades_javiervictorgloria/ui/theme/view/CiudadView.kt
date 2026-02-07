@@ -44,7 +44,7 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCi
 
 @Preview
 @Composable
-fun PreviewCiudadView(){
+fun PreviewCiudadView() {
     CiudadView(viewModel = viewModel())
 }
 
@@ -52,25 +52,28 @@ fun PreviewCiudadView(){
 @Composable
 fun CiudadView(
     viewModel: ViewModelCiudad
-){
+) {
     val ciudadActual = viewModel.ciudadSeleccionar
     val categoriaActual = viewModel.seleccionarCategoria
     //filtramos por ciudad sino por ciudad y categoria
-    val filtrarLugar = FuenteDatos.lugares.filter {
-        lugar ->
-        if (categoriaActual == 0){
+    val filtrarLugar = FuenteDatos.lugares.filter { lugar ->
+        if (categoriaActual == 0) {
             lugar.ciudad == ciudadActual
-        }else{
+        } else {
             lugar.ciudad == ciudadActual && lugar.categoria == categoriaActual
         }
     }
 
-    Scaffold (containerColor = Color(0xFFF8F0FA)){ paddingValues ->
+    Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(paddingValues)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(20.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp)
             ) {
                 Text(
                     text = stringResource(id = ciudadActual.name),
@@ -80,33 +83,34 @@ fun CiudadView(
 
                 Text(
                     text = "Descubre lugares preciosos",
-                    style= MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = Color.Gray
                 )
             }
             //carrusel
             Text(
                 text = "PUNTOS DE INTERÉS",
-                style= MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium,
                 fontFamily = FontFamily.SansSerif,
                 color = Color.Blue,
-                modifier= Modifier.padding(start = 15.dp, top = 15.dp, bottom = 7.dp)
+                modifier = Modifier.padding(start = 15.dp, top = 15.dp, bottom = 7.dp)
 
             )
 
             LazyRow(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 6.dp),
                 contentPadding = PaddingValues(horizontal = 22.dp),
                 horizontalArrangement = Arrangement.spacedBy(30.dp)
             ) {
                 //aqui se usa la lista de pair
-                items(FuenteDatos.categoriasOpciones){
-                    (idTexto,idIcono) ->
+                items(FuenteDatos.categoriasOpciones) { (idTexto, idIcono) ->
                     ItemCarrusel(
                         idIcono = idIcono,
-                       // label= stringResource(id =idTexto),
-                        isSelected= categoriaActual == idTexto,
-                        onClick= {viewModel.actualizarCateg(idTexto)}
+                        // label= stringResource(id =idTexto),
+                        isSelected = categoriaActual == idTexto,
+                        onClick = { viewModel.actualizarCateg(idTexto) }
                     )
                 }
 
@@ -119,8 +123,7 @@ fun CiudadView(
                 contentPadding = PaddingValues(15.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
-                items(filtrarLugar){
-                    lugar ->
+                items(filtrarLugar) { lugar ->
                     CardLugar(lugar)
                 }
             }
@@ -135,10 +138,11 @@ fun ItemCarrusel(
     //label: String,
     isSelected: Boolean,
     onClick: () -> Unit
-)
-{
+) {
     Surface(
-        modifier = Modifier.size(60.dp).clickable{onClick()},
+        modifier = Modifier
+            .size(60.dp)
+            .clickable { onClick() },
         shape = CircleShape,
         //si se selcciona brilla morado
         color = if (isSelected) Color(0xFF9C27B0) else Color.White,
@@ -157,28 +161,32 @@ fun ItemCarrusel(
         modifier = Modifier.padding(top = 4.dp),
         //maxLines = 1
     )*/
-    }
+}
 
 
 @Composable
 fun CardLugar(
     lugar: Lugar
-){
+) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        shape = RoundedCornerShape(26.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(243, 229, 245, 255)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Row(
             modifier = Modifier.padding(18.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+
         ) {
             Image(
                 painter = painterResource(id = lugar.imageRes),
                 contentDescription = null,
-                modifier = Modifier.size(70.dp).clip(MaterialTheme.shapes.large),
-                contentScale = ContentScale.Crop
+                modifier = Modifier
+                    .size(70.dp)
+                    .clip(MaterialTheme.shapes.large),
+                contentScale = ContentScale.Crop,
+                alignment = Alignment.Center
             )
 
             Spacer(modifier = Modifier.width(16.dp))

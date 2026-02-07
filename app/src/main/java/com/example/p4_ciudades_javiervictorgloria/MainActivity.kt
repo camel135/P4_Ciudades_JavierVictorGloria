@@ -9,6 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.P4_Ciudades_JavierVictorGloriaTheme
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 
@@ -18,9 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             P4_Ciudades_JavierVictorGloriaTheme {
-                HomeView(
-
-                )
+                previewApp()
             }
         }
     }
@@ -32,8 +31,6 @@ class MainActivity : ComponentActivity() {
 )
 @Composable
 fun previewApp(){
-    HomeView(
-        viewModelHome = viewModel()
-    )
+    CiudadView(viewModel())
 }
 
