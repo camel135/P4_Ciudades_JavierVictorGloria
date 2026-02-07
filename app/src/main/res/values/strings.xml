@@ -97,10 +97,16 @@
 
 
     //Categorias
+    <string name="todo_lugar">Todo</string>
     <string name="cafeterias">Cafeterías</string>
     <string name="restaurantes">Restaurantes</string>
     <string name="centros_comerciales">Centros Comerciales</string>
     <string name="parques">Parques</string>
+    
+    //CiudadView
+    <string name="descubre_lugares_preciosos">Descubre lugares preciosos</string>
+    <string name="puntos_interes">Puntos de interes</string>
+    
 </resources>
 
 

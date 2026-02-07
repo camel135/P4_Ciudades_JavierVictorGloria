@@ -1,6 +1,7 @@
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -13,7 +14,7 @@ class ViewModelCiudad : ViewModel() {
         private set
 
     //vamos a empezar por defecto con restaurantes
-    var categoriaSeleccionada by mutableStateOf(0)
+    var categoriaSeleccionada by mutableIntStateOf(0)
         private set
 
 
@@ -28,7 +29,6 @@ class ViewModelCiudad : ViewModel() {
             if (categoriaSeleccionada==0) {
                 lugar.ciudad == ciudadSeleccionada
             }else{
-
                 lugar.ciudad == ciudadSeleccionada && lugar.categoria == categoriaSeleccionada//lugares de la ciudad y categoria seleccionada
             }
         }

@@ -77,9 +77,10 @@ object FuenteDatos {
     )
 
     val categoriasOpciones = listOf(
+        Pair(R.string.todo_lugar,R.drawable.apartment_24px),
         Pair(R.string.restaurantes, R.drawable.outline_ramen_dining_24),
         Pair(R.string.parques, R.drawable.outline_forest_24),
         Pair(R.string.centros_comerciales, R.drawable.outline_shopping_bag_24),
-        Pair(R.string.cafeterias, R.drawable.outline_local_cafe_24)
+        Pair(R.string.cafeterias, R.drawable.outline_local_cafe_24),
     )
 }

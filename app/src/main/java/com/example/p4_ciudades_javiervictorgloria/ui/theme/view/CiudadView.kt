@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
@@ -72,14 +73,14 @@ fun CiudadView(
                 )
 
                 Text(
-                    text = "Descubre lugares preciosos",
+                    text = stringResource(R.string.descubre_lugares_preciosos),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.Gray
                 )
             }
             //carrusel
             Text(
-                text = "PUNTOS DE INTERÉS",
+                text = stringResource(R.string.puntos_interes),
                 style = MaterialTheme.typography.titleMedium,
                 fontFamily = FontFamily.SansSerif,
                 color = Color.Blue,
