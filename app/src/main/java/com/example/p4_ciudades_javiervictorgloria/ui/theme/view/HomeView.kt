@@ -168,7 +168,7 @@ fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
                     )
 
 
-                    NavigationBarItem(
+                     NavigationBarItem(
                         icon = {
                             Icon(
                                 imageVector = Icons.Default.ArrowForward,

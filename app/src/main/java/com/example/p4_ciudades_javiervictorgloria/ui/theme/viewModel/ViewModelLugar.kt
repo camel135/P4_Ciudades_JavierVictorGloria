@@ -1,4 +1,4 @@
-/**
+
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel
 
 import androidx.compose.runtime.getValue
@@ -9,10 +9,15 @@ import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 
 class ViewModelLugar : ViewModel() {
-     var lugarSeleccionar by  mutableStateOf(FuenteDatos.lugares[0])
+     var lugarSeleccionado by  mutableStateOf<Lugar?>(null) //null para que no haya ningun lugar seleccionado
          private set
-    fun seleccionarLugar(nuevoLugar: Lugar){
-        lugarSeleccionar= nuevoLugar
+
+    fun seleccionarLugar(nuevoLugar: Lugar){ //la funcion se llama desde la segunda pantalla al hacer click en una
+        lugarSeleccionado= nuevoLugar
+    }
+
+    // se comprueba si estan los datos validos
+    fun datosValidosLugar(): Boolean{
+        return lugarSeleccionado !=null
     }
 }
- **/

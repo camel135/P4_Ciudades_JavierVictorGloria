@@ -11,5 +11,5 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)*/
 
 val PurpleCenter = Color(0xFF9C27B0)
-val PurpleFondo = Color(0xFFF3E5F5)
+val PurpleFondo = Color(0xFF875E8A)
 val Pink = Color(0xFFE91E63)
