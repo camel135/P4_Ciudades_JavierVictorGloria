@@ -98,7 +98,6 @@ fun CiudadView(
                 items(FuenteDatos.categoriasOpciones) { (idTexto, idIcono) ->
                     ItemCarrusel(
                         idIcono = idIcono,
-                        // label= stringResource(id =idTexto),
                         isSelected = viewModelCiudad.categoriaSeleccionada == idTexto,
                         onClick = { viewModelCiudad.actualizarCategoria(idTexto) }
                     )
@@ -145,12 +144,7 @@ fun ItemCarrusel(
             tint = if (isSelected) Color.White else Color(0xFF9C27B0)
         )
     }
-    /*Text(
-        text = label,
-        style = MaterialTheme.typography.labelSmall,
-        modifier = Modifier.padding(top = 4.dp),
-        //maxLines = 1
-    )*/
+
 }
 
 
