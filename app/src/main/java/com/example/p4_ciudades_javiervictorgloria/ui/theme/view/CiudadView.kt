@@ -51,8 +51,15 @@ fun CiudadView(
 ){
     val ciudadActual = viewModel.ciudadSeleccionar
     val categoriaActual = viewModel.seleccionarCategoria
-    //se filtra esos lugares de la ciudad por la que coincidan
-    val filtrarLugar = FuenteDatos.lugares.filter { it.ciudad == ciudadActual && it.categoria == categoriaActual }
+    //filtramos por ciudad sino por ciudad y categoria
+    val filtrarLugar = FuenteDatos.lugares.filter {
+        lugar ->
+        if (categoriaActual == 0){
+            lugar.ciudad == ciudadActual
+        }else{
+            lugar.ciudad == ciudadActual && lugar.categoria == categoriaActual
+        }
+    }
 
     Scaffold{ paddingValues ->
         Column(
@@ -60,16 +67,16 @@ fun CiudadView(
         ) {
             //carrusel
             Text(
-                text = "Categorias",
+                text = "PUNTOS DE INTERÉS",
                 style= MaterialTheme.typography.titleLarge,
-                modifier= Modifier.padding(start = 15.dp, top = 15.dp, bottom = 6.dp)
+                modifier= Modifier.padding(start = 15.dp, top = 15.dp, bottom = 7.dp)
 
             )
 
             LazyRow(
                 modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
-                contentPadding = PaddingValues(horizontal = 14.dp),
-                horizontalArrangement = Arrangement.spacedBy(14.dp)
+                contentPadding = PaddingValues(horizontal = 17.dp),
+                horizontalArrangement = Arrangement.spacedBy(17.dp)
             ) {
                 //aqui se usa la lista de pair
                 items(FuenteDatos.categoriasOpciones){
@@ -130,7 +137,7 @@ fun ItemCarrusel(
             text = label,
             style = MaterialTheme.typography.labelSmall,
             modifier = Modifier.padding(top = 4.dp),
-            maxLines = 1
+            //maxLines = 1
         )
     }
 }
