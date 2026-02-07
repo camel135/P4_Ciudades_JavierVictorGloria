@@ -45,7 +45,7 @@ object FuenteDatos {
         Lugar(R.string.casas_cubo, ciudades[0], R.drawable.img_casas_cubo, R.string.desc_casas_cubo, R.string.parques),
         Lugar(R.string.puente_erasmo, ciudades[0], R.drawable.img_puente_erasmo, R.string.desc_puente_erasmo, R.string.parques),
         Lugar(R.string.euromast, ciudades[0], R.drawable.img_euromast, R.string.desc_euromast, R.string.cafeterias),
-        Lugar(R.string.zoo_rotterdam, ciudades[0], R.drawable.img_zoo, R.string.desc_zoo, R.string.parques),
+        Lugar(R.string.zoo_rotterdam, ciudades[0], R.drawable.ic_launcher_foreground, R.string.desc_zoo, R.string.parques),
 
         // --- ALGECIRAS (ciudades[1]) ---
         Lugar(R.string.playa_getares, ciudades[1], R.drawable.img_getares, R.string.desc_getares, R.string.parques),
@@ -69,7 +69,7 @@ object FuenteDatos {
         Lugar(R.string.acuario_santos, ciudades[3], R.drawable.img_acuario, R.string.desc_acuario, R.string.parques),
 
         // --- HONG KONG (ciudades[4]) ---
-        Lugar(R.string.victoria_peak, ciudades[4], R.drawable.img_victoria_peak, R.string.desc_victoria_peak, R.string.parques),
+        Lugar(R.string.victoria_peak, ciudades[4], R.drawable.ic_launcher_foreground, R.string.desc_victoria_peak, R.string.parques),
         Lugar(R.string.buda_gigante, ciudades[4], R.drawable.img_buda, R.string.desc_buda, R.string.parques),
         Lugar(R.string.star_ferry, ciudades[4], R.drawable.img_ferry, R.string.desc_ferry, R.string.restaurantes),
         Lugar(R.string.temple_street, ciudades[4], R.drawable.img_temple_market, R.string.desc_temple, R.string.centros_comerciales),

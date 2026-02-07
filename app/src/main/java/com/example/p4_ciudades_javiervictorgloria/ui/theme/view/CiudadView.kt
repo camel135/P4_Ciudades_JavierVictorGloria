@@ -1,6 +1,5 @@
-package com.example.p4_ciudades_javiervictorgloria.data
+package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
 
-import android.content.res.Resources
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.p4_ciudades_javiervictorgloria.R
+import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
 
@@ -184,7 +183,7 @@ fun CardLugar(
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            Column() {
+            Column {
                 Text(
                     text = stringResource(id = lugar.name),
                     style = MaterialTheme.typography.titleLarge,
