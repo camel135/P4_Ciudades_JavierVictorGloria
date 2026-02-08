@@ -11,31 +11,36 @@ object FuenteDatos {
             name = R.string.rotterdam,
             pais = R.string.holanda,
             continente = R.string.europa,
-            imagen = R.drawable.img_rotterdam
+            imagen = R.drawable.img_rotterdam,
+            imagenPlaneta = R.drawable.planeta_rotterdam
         ),
         Ciudad(
             name = R.string.algeciras,
             pais = R.string.espana,
             continente = R.string.europa,
-            imagen = R.drawable.img_algeciras
+            imagen = R.drawable.img_algeciras,
+            imagenPlaneta = R.drawable.planeta_algeciras
         ),
         Ciudad(
             name = R.string.oran,
             pais = R.string.argelia,
             continente = R.string.africa,
-            imagen = R.drawable.img_oran
+            imagen = R.drawable.img_oran,
+            imagenPlaneta = R.drawable.planeta_oran
         ),
         Ciudad(
             name = R.string.santos,
             pais = R.string.brasil,
             continente = R.string.samerica,
-            imagen = R.drawable.img_santos
+            imagen = R.drawable.img_santos,
+            imagenPlaneta = R.drawable.planeta_santos
         ),
         Ciudad(
             name = R.string.hong_kong,
             pais = R.string.china,
             continente = R.string.asia,
-            imagen = R.drawable.img_hong_kong
+            imagen = R.drawable.img_hong_kong,
+            imagenPlaneta = R.drawable.planeta_hong_kong
         )
     )
 
