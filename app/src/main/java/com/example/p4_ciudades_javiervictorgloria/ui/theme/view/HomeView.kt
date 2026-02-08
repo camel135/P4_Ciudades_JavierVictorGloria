@@ -167,7 +167,7 @@ fun HomeView(
                         icon = { Text("Ciudad") },
                         selected = false,
                         onClick = {
-
+                            onNavigateToCiudad()
                         }
                     )
 

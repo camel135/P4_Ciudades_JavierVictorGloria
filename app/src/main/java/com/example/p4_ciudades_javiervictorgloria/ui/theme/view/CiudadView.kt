@@ -121,7 +121,6 @@ fun CiudadView(
                     CardLugar(
                         lugar,
                         onClick = {
-                            viewModelCiudad.onCradClick()
                             onLugarClick()
                         },
                     )
@@ -165,10 +164,13 @@ fun CardLugar(
     onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable{onClick()},
         shape = RoundedCornerShape(26.dp),
         colors = CardDefaults.cardColors(containerColor = Color(243, 229, 245, 255)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+
 
     ) {
         Row(

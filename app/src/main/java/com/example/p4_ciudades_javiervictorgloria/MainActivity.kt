@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.Navigation
+import com.example.p4_ciudades_javiervictorgloria.navigation.navigation
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.P4_Ciudades_JavierVictorGloriaTheme
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 
@@ -16,7 +18,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             P4_Ciudades_JavierVictorGloriaTheme {
-                previewApp()
+                navigation()
             }
         }
     }
