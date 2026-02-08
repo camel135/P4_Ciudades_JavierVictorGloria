@@ -46,13 +46,17 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCi
 @Preview
 @Composable
 fun PreviewCiudadView() {
-    CiudadView(viewModelCiudad = viewModel())
+    CiudadView(
+        viewModel(),
+        {}
+    )
 }
 
 
 @Composable
 fun CiudadView(
     viewModelCiudad: ViewModelCiudad = viewModel(),
+    onLugarClick: () -> Unit,
 ) {
 
     Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->
@@ -114,7 +118,13 @@ fun CiudadView(
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
                 items(viewModelCiudad.lugarFiltrado()) { lugar ->
-                    CardLugar(lugar)
+                    CardLugar(
+                        lugar,
+                        onClick = {
+                            viewModelCiudad.onCradClick()
+                            onLugarClick()
+                        },
+                    )
                 }
             }
         }
@@ -151,13 +161,15 @@ fun ItemCarrusel(
 
 @Composable
 fun CardLugar(
-    lugar: Lugar
+    lugar: Lugar,
+    onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(26.dp),
         colors = CardDefaults.cardColors(containerColor = Color(243, 229, 245, 255)),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+
     ) {
         Row(
             modifier = Modifier.padding(18.dp),
@@ -191,7 +203,7 @@ fun CardLugar(
                 )
 
                 Text(
-                    text = "Pulsa para descubrir más",
+                    text = stringResource(R.string.pulsar_para_informacion),
                     color = Color(0xFFE91E63),
                     style = MaterialTheme.typography.labelSmall
                 )

@@ -39,13 +39,17 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHo
 @Composable
 fun previewApp() {
     HomeView(
-        viewModelHome = viewModel()
+        viewModel(),
+        {}
     )
 }
 
 
 @Composable
-fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
+fun HomeView(
+    viewModelHome: ViewModelHome = viewModel(),
+    onNavigateToCiudad: () -> Unit
+) {
 
 
     Surface(
@@ -168,7 +172,7 @@ fun HomeView(viewModelHome: ViewModelHome = viewModel()) {
                     )
 
 
-                     NavigationBarItem(
+                    NavigationBarItem(
                         icon = {
                             Icon(
                                 imageVector = Icons.Default.ArrowForward,

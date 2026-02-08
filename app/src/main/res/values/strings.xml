@@ -106,6 +106,7 @@
     //CiudadView
     <string name="descubre_lugares_preciosos">Descubre lugares preciosos</string>
     <string name="puntos_interes">Puntos de interes</string>
+    <string name="pulsar_para_informacion">Pulsa para descubrir más</string>
     
 </resources>
 

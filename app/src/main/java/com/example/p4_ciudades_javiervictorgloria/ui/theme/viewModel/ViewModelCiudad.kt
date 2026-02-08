@@ -36,5 +36,9 @@ class ViewModelCiudad : ViewModel() {
 
     }
 
+    fun onCradClick(){
+
+    }
+
 
 }
