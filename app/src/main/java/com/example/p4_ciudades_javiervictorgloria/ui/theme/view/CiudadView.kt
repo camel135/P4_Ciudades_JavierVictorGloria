@@ -41,6 +41,7 @@ import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
 
 @Preview
@@ -48,7 +49,8 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCi
 fun PreviewCiudadView() {
     CiudadView(
         viewModel(),
-        {},
+        viewModelLugar= viewModel(),
+        onLugarClick = {},
         cityIndex = 0
     )
 }
@@ -57,6 +59,7 @@ fun PreviewCiudadView() {
 @Composable
 fun CiudadView(
     viewModelCiudad: ViewModelCiudad = viewModel(),
+    viewModelLugar: ViewModelLugar,
     onLugarClick: () -> Unit,
     cityIndex: Int,
 ) {
@@ -123,6 +126,7 @@ fun CiudadView(
                     CardLugar(
                         lugar,
                         onClick = {
+                            viewModelLugar.seleccionarLugar(lugar)
                             onLugarClick()
                         },
                     )

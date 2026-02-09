@@ -9,7 +9,7 @@ import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 
 class ViewModelLugar : ViewModel() {
-     var lugarSeleccionado by  mutableStateOf<Lugar?>(FuenteDatos.lugares[1]) //null para que no haya ningun lugar seleccionado
+     var lugarSeleccionado by  mutableStateOf<Lugar?>(null) //null para que no haya ningun lugar seleccionado
          private set
 
     fun seleccionarLugar(nuevoLugar: Lugar){ //la funcion se llama desde la segunda pantalla al hacer click en una
