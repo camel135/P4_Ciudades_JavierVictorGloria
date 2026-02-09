@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">P4_Cities_JavierVictorGloria</string>
+
+    <!-- Cities -->
+    <string name="rotterdam">Rotterdam</string>
+    <string name="holanda">Netherlands</string>
+    <string name="algeciras">Algeciras</string>
+    <string name="espana">Spain</string>
+    <string name="oran">Oran</string>
+    <string name="argelia">Algeria</string>
+    <string name="santos">Santos</string>
+    <string name="brasil">Brazil</string>
+    <string name="hong_kong">Hong Kong</string>
+
+    <!-- Countries -->
+    <string name="china">China</string>
+    <string name="europa">Europe</string>
+    <string name="africa">Africa</string>
+    <string name="samerica">South America</string>
+    <string name="asia">Asia</string>
+
+    <!-- Places -->
+    <string name="markthal">Markthal</string>
+    <string name="desc_markthal">An iconic indoor market with a giant mural and fresh food stalls.</string>
+
+    <string name="casas_cubo">Cube Houses</string>
+    <string name="desc_casas_cubo">Innovative 45-degree tilted homes designed by Piet Blom.</string>
+
+    <string name="puente_erasmo">Erasmus Bridge</string>
+    <string name="desc_puente_erasmo">Stunning cable-stayed bridge known as "The Swan".</string>
+
+    <string name="euromast">Euromast</string>
+    <string name="desc_euromast">Observation tower with the best panoramic views of the city.</string>
+
+    <string name="zoo_rotterdam">Rotterdam Zoo</string>
+    <string name="desc_zoo">One of the oldest and most beautiful zoos in the Netherlands.</string>
+
+    <string name="playa_getares">Getares Beach</string>
+    <string name="desc_getares">Beach famous for its views of the Strait and family-friendly atmosphere.</string>
+
+    <string name="plaza_alta">High Square</string>
+    <string name="desc_plaza_alta">The heart of the city, decorated with typical Andalusian tiles.</string>
+
+    <string name="parque_cristina">Maria Cristina Park</string>
+    <string name="desc_parque">An oasis of tranquility with historic gardens in the center.</string>
+
+    <string name="puerto_algeciras">Port of Algeciras</string>
+    <string name="desc_puerto">One of the most important commercial ports in Europe.</string>
+
+    <string name="mercado_abastos">Abastos Market</string>
+    <string name="desc_mercado">Engineering masterpiece by Eduardo Torroja.</string>
+
+    <string name="fuerte_santa_cruz">Fort of Santa Cruz</string>
+    <string name="desc_santa_cruz">Historic fort with spectacular views of the port and city.</string>
+
+    <string name="mezquita_pasha">Hassan Pasha Mosque</string>
+    <string name="desc_mezquita">An architectural gem from the Ottoman period.</string>
+
+    <string name="catedral_oran">Sacred Heart Cathedral</string>
+    <string name="desc_catedral">Old cathedral converted into a library in Byzantine style.</string>
+
+    <string name="front_de_mer">Front de Mer</string>
+    <string name="desc_front_mer">Seaside promenade perfect for walks and enjoying the sea breeze.</string>
+
+    <string name="palacio_bey">Bey's Palace</string>
+    <string name="desc_palacio_bey">Historic residence showcasing the elegance of Islamic art.</string>
+
+    <string name="museo_cafe">Coffee Museum</string>
+    <string name="desc_museo_cafe">Located in the old Coffee Exchange, narrating the history of the bean in Brazil.</string>
+
+    <string name="jardin_playa">Beach Gardens</string>
+    <string name="desc_jardin_santos">The longest beach front garden in the world according to Guinness.</string>
+
+    <string name="monte_serrat">Mount Serrat</string>
+    <string name="desc_monte_serrat">Take a funicular to see the entire city and the port of Santos.</string>
+
+    <string name="estadio_santos">Vila Belmiro Stadium</string>
+    <string name="desc_estadio">The legendary field where Pelé made history with Santos FC.</string>
+
+    <string name="acuario_santos">Santos Aquarium</string>
+    <string name="desc_acuario">The first municipal aquarium in Brazil with hundreds of species.</string>
+
+    <string name="victoria_peak">Victoria Peak</string>
+    <string name="desc_victoria_peak">The highest point on the island with incredible views of the skyscrapers.</string>
+
+    <string name="buda_gigante">Tian Tan Buddha</string>
+    <string name="desc_buda">Giant bronze statue located in the Lantau Mountains.</string>
+
+    <string name="star_ferry">Star Ferry</string>
+    <string name="desc_ferry">Cross Victoria Harbour on this historic and affordable boat.</string>
+
+    <string name="temple_street">Temple Street Night Market</string>
+    <string name="desc_temple">Vibrant night market with street food and souvenirs.</string>
+
+    <string name="avenue_stars">Avenue of Stars</string>
+    <string name="desc_avenue_stars">Homage to Hong Kong cinema with statues like Bruce Lee's.</string>
+
+    <!-- Categories -->
+    <string name="todo_lugar">All</string>
+    <string name="cafeterias">Cafés</string>
+    <string name="restaurantes">Restaurants</string>
+    <string name="centros_comerciales">Shopping Centers</string>
+    <string name="parques">Parks</string>
+
+    <!-- CityView -->
+    <string name="descubre_lugares_preciosos">Discover beautiful places</string>
+    <string name="puntos_interes">Points of interest</string>
+    <string name="pulsar_para_informacion">Click to discover more</string>
+
+</resources>

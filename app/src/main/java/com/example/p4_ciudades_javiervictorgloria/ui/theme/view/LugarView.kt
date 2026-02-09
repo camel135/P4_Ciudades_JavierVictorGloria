@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,16 +21,13 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -41,9 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
-import androidx.core.net.toUri
 
 @Preview
 @Composable
@@ -56,13 +50,13 @@ fun PreviewLugarView() {
 fun LugarView(
     viewModelLugar: ViewModelLugar = viewModel()
 ) {
-    val lugar = viewModelLugar.lugarSeleccionado
+
     val context = LocalContext.current
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background
     ) { paddingValues ->
-        if (lugar != null) {
+        if (viewModelLugar.lugarSeleccionado != null) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -73,12 +67,13 @@ fun LugarView(
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(350.dp).padding(13.dp),
+                        .height(350.dp)
+                        .padding(13.dp),
                     shape = RoundedCornerShape(24.dp),
                     elevation = CardDefaults.cardElevation(8.dp)
                 ) {
                     Image(
-                        painter = painterResource(id = lugar.imageRes),
+                        painter = painterResource(id = viewModelLugar.lugarSeleccionado!!.imageRes),
                         contentDescription = null,
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
@@ -86,7 +81,11 @@ fun LugarView(
                 }
                 Card(
                     modifier = Modifier
-                        .fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 16.dp,
+                            vertical = 8.dp
+                        ),
                     shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
                 ) {
@@ -94,22 +93,25 @@ fun LugarView(
                         modifier = Modifier.padding(22.dp)
                     ) {
                         Text(
-                            text = stringResource(lugar.name),
+                            text = stringResource(viewModelLugar.lugarSeleccionado!!.name),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.primary
                         )
                         Spacer(modifier = Modifier.height(15.dp))
                         Box(
-                            modifier = Modifier.fillMaxWidth(0.2f).height(4.dp).background(
-                                MaterialTheme.colorScheme.background, RoundedCornerShape(2.dp)
-                            )
+                            modifier = Modifier
+                                .fillMaxWidth(0.2f)
+                                .height(4.dp)
+                                .background(
+                                    MaterialTheme.colorScheme.background, RoundedCornerShape(2.dp)
+                                )
                         )
 
                         Spacer(modifier = Modifier.height(20.dp))
 
                         Text(
-                            text = stringResource(lugar.descripcion),
+                            text = stringResource(viewModelLugar.lugarSeleccionado!!.descripcion),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurface,
                             fontWeight = FontWeight.Medium,
@@ -119,13 +121,15 @@ fun LugarView(
                         Spacer(modifier = Modifier.height(30.dp))
                         Button(
                             onClick = {
-                                val nombre = context.resources.getString(lugar.name)
+                                val nombre = context.resources.getString(viewModelLugar.lugarSeleccionado!!.name)
                                 val uri = Uri.parse("geo:0,0?q=$nombre")
                                 val intent = Intent(Intent.ACTION_VIEW, uri)
                                 intent.setPackage("com.google.android.apps.maps")
                                 context.startActivity(intent)
                             },
-                            modifier = Modifier.fillMaxWidth().height(60.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(60.dp),
                             shape = RoundedCornerShape(24.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -150,7 +154,10 @@ fun LugarView(
                     }
                 }
             }
+        } else {
+
         }
+
     }
 }
 
