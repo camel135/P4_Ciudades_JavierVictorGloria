@@ -7,12 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 
 class ViewModelHome : ViewModel() {
-
     var expanded by mutableStateOf(false)
         private set
 
     var ciudadIndex by mutableStateOf(0)
-
+        private set
 
     fun onDropDownMenuClick() {
         expanded = !expanded
@@ -26,12 +25,23 @@ class ViewModelHome : ViewModel() {
 
     }
 
-    fun onCiudadIndexChange(ciudadIndex: Int){
-
-
+    // funcion para la flecha derecha
+    fun siguienteCiudad(){
+        if (ciudadIndex < FuenteDatos.ciudades.size - 1) {
+            ciudadIndex++
+        } else {
+            ciudadIndex = 0
+        }
     }
 
-
+    // funcion pa la izquierda
+    fun anteriorCiudad(){
+        if (ciudadIndex > 0){
+            ciudadIndex--
+        } else {
+            ciudadIndex = FuenteDatos.ciudades.size -1
+        }
+    }
 
 
 

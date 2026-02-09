@@ -2,6 +2,7 @@ package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +19,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
@@ -26,11 +28,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
+
 
 @Preview(
     showBackground = true,
@@ -50,151 +55,110 @@ fun HomeView(
     viewModelHome: ViewModelHome = viewModel(),
     onNavigateToCiudad: () -> Unit
 ) {
-
+    // para saber la ciudad actual usando el indice
+    val ciudadActual = FuenteDatos.ciudades[viewModelHome.ciudadIndex]
 
     Surface(
         modifier = Modifier
             .fillMaxSize()
     ) {
-
         Column(
-
+            modifier = Modifier
+                .fillMaxSize()
         ) {
-            Column(
-
-            ) {
-                NavigationBar(
-
-
+            // Barra superior
+            NavigationBar {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
                 ) {
+                    dropDownMenu(viewModelHome)
 
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        dropDownMenu(viewModelHome)
-                        IconButton(onClick = {}) {
-
-                            Icon(
-                                imageVector = Icons.Default.Info,
-                                contentDescription = null,
-                            )
-                        }
-                        IconButton(onClick = {}) {
-
-                            Icon(
-                                imageVector = Icons.Default.Info,
-                                contentDescription = null,
-                            )
-                        }
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Filled.Info,
+                            contentDescription = "Info",
+                        )
                     }
-
-                    /**
-                    NavigationBarItem(
-                    icon = {
-                    Icon(
-                    imageVector = Icons.Default.Info,
-                    contentDescription = null,
-
-                    )
-                    },
-                    selected = false,
-                    onClick = {
-
+                    IconButton(onClick = { viewModelHome.onSunClick() }) {
+                        Icon(
+                            imageVector = Icons.Filled.Info,
+                            contentDescription = "Tema",
+                        )
                     }
-                    )
-                    NavigationBarItem(
-                    icon = {
-                    Icon(
-                    imageVector = Icons.Default.Star,
-                    contentDescription = null,
-
-                    )
-                    },
-                    selected = false,
-                    onClick = {
-
-                    }
-                    )
-                     **/
                 }
 
             }
 
 
+            // Central (el planeta)
             Column(
                 modifier = Modifier
-                    .weight(7f)
+                    .weight(1f)
                     .fillMaxSize(),
-
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Box(
-
-
+                    // Al hacer click en planeta se entra pasa a la pagina
+                    modifier = Modifier
+                        .clickable {
+                            onNavigateToCiudad()
+                        }
                 ) {
                     Image(
-                        painter = painterResource(R.drawable.proto_menu),
-                        contentDescription = null,
-                        Modifier.size(200.dp)
-
+                        painter = painterResource(ciudadActual.imagenPlaneta),
+                        contentDescription = stringResource(ciudadActual.name),
+                        modifier = Modifier.size(300.dp)
                     )
                 }
             }
-            Column(
-                modifier = Modifier
-                    .weight(1f)
+            // Para la zona inferior
+            NavigationBar {
+                NavigationBarItem(
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Anterior",
+                        )
+                    },
+                    selected = false,
+                    onClick = {
+                        viewModelHome.anteriorCiudad()
+                    }
+                )
+                // texto ciudad
+                NavigationBarItem(
+                    icon = {
+                        Text(
+                            text = stringResource(ciudadActual.name),
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    },
+                    selected = false,
+                    onClick = {
+                        onNavigateToCiudad()
+                    }
+                )
 
-            ) {
-                NavigationBar(
-                ) {
-                    NavigationBarItem(
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.ArrowBack,
-                                contentDescription = null,
+                NavigationBarItem(
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowForward,
+                            contentDescription = "Siguiente",
+                        )
+                    },
+                    selected = false,
+                    onClick = {
+                        viewModelHome.siguienteCiudad()
+                    }
+                )
 
-                                )
-                        },
-                        selected = false,
-                        onClick = {
-                            viewModelHome.ciudadIndex - 1
-                        }
-                    )
-
-                    NavigationBarItem(
-                        icon = { Text("Ciudad") },
-                        selected = false,
-                        onClick = {
-                            onNavigateToCiudad()
-                        }
-                    )
-
-
-                    NavigationBarItem(
-                        icon = {
-                            Icon(
-                                imageVector = Icons.Default.ArrowForward,
-                                contentDescription = null,
-
-                                )
-                        },
-                        selected = false,
-                        onClick = {
-                            viewModelHome.ciudadIndex + 1
-                        }
-                    )
-
-                }
             }
         }
     }
-
-
 }
-
 @Composable
 fun dropDownMenu(viewModelHome: ViewModelHome) {
 
