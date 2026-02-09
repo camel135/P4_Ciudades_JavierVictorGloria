@@ -46,7 +46,7 @@ fun PreviewLugarView() {
     LugarView(viewModelLugar = viewModel())
 }
 
-@SuppressLint("ResourceType")
+@SuppressLint("ResourceType", "LocalContextResourcesRead")
 @Composable
 fun LugarView(
     viewModelLugar: ViewModelLugar = viewModel()
@@ -109,12 +109,15 @@ fun LugarView(
 
                     // Maps
                     Card(
-                        /*onClick = {
-                            val uri = "geo:0,0?q=${stringResource(lugar.name)}".toUri()
+                        onClick = {
+                            val nombre = context.resources.getString(lugar.name)
+                            val uri = Uri.parse("geo:0,0=$nombre")
                             val intent = Intent(Intent.ACTION_VIEW, uri)
-                            intent.setPackage("com.google.android.maps")
+                            intent.setPackage("com.google.android.apps.maps")
                             context.startActivity(intent)
-                        },*/
+
+
+                        },
                         modifier = Modifier.fillMaxWidth().height(160.dp),
                         shape= RoundedCornerShape(24.dp),
                         colors = CardDefaults.cardColors(containerColor= Color(0xFFE1F5FE)),
