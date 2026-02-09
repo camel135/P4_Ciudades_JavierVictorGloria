@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,12 +13,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -65,10 +70,12 @@ fun LugarView(
                     .verticalScroll(rememberScrollState())
             ) {
 
-                Box(
+                Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(350.dp)
+                        .height(350.dp).padding(13.dp),
+                    shape = RoundedCornerShape(24.dp),
+                    elevation = CardDefaults.cardElevation(8.dp)
                 ) {
                     Image(
                         painter = painterResource(id = lugar.imageRes),
@@ -77,74 +84,73 @@ fun LugarView(
                         contentScale = ContentScale.Crop
                     )
                 }
-                Column(
+                Card(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(25.dp)
+                        .fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+                    shape = RoundedCornerShape(topStart = 30.dp, topEnd = 30.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
                 ) {
-                    Text(
-                        text = stringResource(lugar.name),
-                        style = MaterialTheme.typography.headlineLarge,
-                        fontWeight = FontWeight.Medium,
-                        color = Color(0xFF7B1FA2)
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
-                    Text(
-                        text = stringResource(lugar.descripcion),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.secondary,
-                        fontWeight = FontWeight.Medium,
-                        lineHeight = 24.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(30.dp))
-
-                    Text(
-                        text = "Ubicación",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    // Maps
-                    Card(
-                        onClick = {
-                            val nombre = context.resources.getString(lugar.name)
-                            val uri = Uri.parse("geo:0,0=$nombre")
-                            val intent = Intent(Intent.ACTION_VIEW, uri)
-                            intent.setPackage("com.google.android.apps.maps")
-                            context.startActivity(intent)
-
-
-                        },
-                        modifier = Modifier.fillMaxWidth().height(160.dp),
-                        shape= RoundedCornerShape(24.dp),
-                        colors = CardDefaults.cardColors(containerColor= Color(0xFFE1F5FE)),
-                        elevation= CardDefaults.cardElevation(defaultElevation= 5.dp)
+                    Column(
+                        modifier = Modifier.padding(22.dp)
                     ) {
+                        Text(
+                            text = stringResource(lugar.name),
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(modifier = Modifier.height(15.dp))
                         Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier.fillMaxSize()
+                            modifier = Modifier.fillMaxWidth(0.2f).height(4.dp).background(
+                                MaterialTheme.colorScheme.background, RoundedCornerShape(2.dp)
+                            )
+                        )
+
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        Text(
+                            text = stringResource(lugar.descripcion),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontWeight = FontWeight.Medium,
+                            lineHeight = 24.sp
+                        )
+
+                        Spacer(modifier = Modifier.height(30.dp))
+                        Button(
+                            onClick = {
+                                val nombre = context.resources.getString(lugar.name)
+                                val uri = Uri.parse("geo:0,0?q=$nombre")
+                                val intent = Intent(Intent.ACTION_VIEW, uri)
+                                intent.setPackage("com.google.android.apps.maps")
+                                context.startActivity(intent)
+                            },
+                            modifier = Modifier.fillMaxWidth().height(60.dp),
+                            shape = RoundedCornerShape(24.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+
                         ) {
-                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Icon(
-                                    imageVector = Icons.Default.LocationOn,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(40.dp),
-                                    tint = Color.Red
-                                )
-                                Spacer(modifier= Modifier.height(10.dp))
-                                Text(
-                                    text = "Ver en Google Maps",
-                                    color = Color(0xFF0288D1),
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
+                            Icon(
+                                imageVector = Icons.Default.LocationOn,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.secondary
+                            )
+
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Text(
+                                text = "VER UBICACIÓN",
+                                fontWeight = FontWeight.Bold
+                            )
+
                         }
+
                     }
                 }
             }
         }
     }
 }
+
