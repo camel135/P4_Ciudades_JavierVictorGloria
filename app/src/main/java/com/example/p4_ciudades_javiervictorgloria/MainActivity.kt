@@ -32,7 +32,8 @@ class MainActivity : ComponentActivity() {
 fun previewApp(){
     CiudadView(
         viewModel(),
-        {}
+        {},
+        cityIndex = 0,
     )
 }
 

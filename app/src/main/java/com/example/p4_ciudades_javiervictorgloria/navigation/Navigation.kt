@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.LugarView
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 
 enum class Views{
     Home,
@@ -34,7 +35,8 @@ fun navigation(){
         composable(route = Views.Ciudad.name) {
             CiudadView(
                 viewModelCiudad = viewModel(),
-                onLugarClick = { navController.navigate(Views.Lugar.name) }
+                onLugarClick = { navController.navigate(Views.Lugar.name) },
+                cityIndex =1,
             )
         }
 

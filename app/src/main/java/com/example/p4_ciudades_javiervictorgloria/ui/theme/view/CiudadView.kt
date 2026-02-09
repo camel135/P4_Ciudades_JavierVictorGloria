@@ -48,7 +48,8 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCi
 fun PreviewCiudadView() {
     CiudadView(
         viewModel(),
-        {}
+        {},
+        cityIndex = 0
     )
 }
 
@@ -57,6 +58,7 @@ fun PreviewCiudadView() {
 fun CiudadView(
     viewModelCiudad: ViewModelCiudad = viewModel(),
     onLugarClick: () -> Unit,
+    cityIndex: Int,
 ) {
 
     Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->

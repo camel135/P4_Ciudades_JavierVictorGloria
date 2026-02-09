@@ -10,6 +10,8 @@ import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 
 class ViewModelCiudad : ViewModel() {
     //se empieza por la primera ciudad
+
+    
     var ciudadSeleccionada by mutableStateOf(FuenteDatos.ciudades[0])
         private set
 
@@ -36,7 +38,7 @@ class ViewModelCiudad : ViewModel() {
 
     }
 
-    
+
 
 
 }

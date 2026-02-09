@@ -1,5 +1,7 @@
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
 
+import android.annotation.SuppressLint
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -30,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,17 +40,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.R
+import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 @Preview
 @Composable
 fun PreviewLugarView(){
     LugarView(viewModelLugar = viewModel())
 }
+@SuppressLint("ResourceType")
 @Composable
 fun LugarView(
     viewModelLugar: ViewModelLugar = viewModel()
 ){
     val lugar= viewModelLugar.lugarSeleccionado
+
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background
@@ -73,14 +79,14 @@ fun LugarView(
                     modifier = Modifier.fillMaxWidth().padding(25.dp)
                 ) {
                     Text(
-                        text=  "Lugar",
+                        text= stringResource(lugar.name),
                         style = MaterialTheme.typography.headlineLarge,
                         fontWeight = FontWeight.Medium,
                         color = Color(0xFF7B1FA2)
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
-                        text = "Descripcion",
+                        text = stringResource(lugar.descripcion),
                         style= MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.secondary,
                         fontWeight = FontWeight.Medium

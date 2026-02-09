@@ -148,7 +148,8 @@ fun HomeView(
                     .weight(1f)
 
             ) {
-                NavigationBar() {
+                NavigationBar(
+                ) {
                     NavigationBarItem(
                         icon = {
                             Icon(
@@ -159,7 +160,7 @@ fun HomeView(
                         },
                         selected = false,
                         onClick = {
-
+                            viewModelHome.ciudadIndex - 1
                         }
                     )
 
@@ -182,7 +183,7 @@ fun HomeView(
                         },
                         selected = false,
                         onClick = {
-
+                            viewModelHome.ciudadIndex + 1
                         }
                     )
 
