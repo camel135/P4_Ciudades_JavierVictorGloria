@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
+import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 
 class ViewModelHome : ViewModel() {
     var expanded by mutableStateOf(false)
@@ -19,6 +20,10 @@ class ViewModelHome : ViewModel() {
     }
     fun onDismissMenu() {
         expanded = false
+    }
+
+    fun lugarRandom(): Lugar{
+        return FuenteDatos.lugares.random()
     }
 
     fun onSunClick() {
@@ -42,6 +47,8 @@ class ViewModelHome : ViewModel() {
             ciudadIndex = FuenteDatos.ciudades.size -1
         }
     }
+
+
 
 
 

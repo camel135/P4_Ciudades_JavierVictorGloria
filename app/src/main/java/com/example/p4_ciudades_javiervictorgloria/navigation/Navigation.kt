@@ -8,29 +8,32 @@ import androidx.navigation.compose.rememberNavController
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.LugarView
-import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
-enum class Views{
+enum class Views {
     Home,
     Ciudad,
     Lugar
 }
 
 @Composable
-fun navigation(){
+fun navigation() {
 
     val navController = rememberNavController()
     val navLugar: ViewModelLugar = viewModel()
+    val navLugarRandom: ViewModelLugar = viewModel()
+
 
     NavHost(
         navController = navController,
         startDestination = Views.Home.name,
-    ){
-        composable (route = Views.Home.name){
+    ) {
+        composable(route = Views.Home.name) {
             HomeView(
                 viewModelHome = viewModel(),
-                onNavigateToCiudad = {navController.navigate(Views.Ciudad.name)}
+                viewModelLugar = navLugarRandom,
+                onNavigateToCiudad = { navController.navigate(Views.Ciudad.name) },
+                onNavigateToRandomLugar = { navController.navigate(Views.Lugar.name) }
             )
         }
 
@@ -39,7 +42,7 @@ fun navigation(){
                 viewModelCiudad = viewModel(),
                 viewModelLugar = navLugar,
                 onLugarClick = { navController.navigate(Views.Lugar.name) },
-                cityIndex =1,
+
             )
         }
 

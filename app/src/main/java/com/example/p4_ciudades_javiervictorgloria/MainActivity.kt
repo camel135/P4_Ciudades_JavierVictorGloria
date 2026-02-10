@@ -34,7 +34,7 @@ fun previewApp(){
         viewModel(),
         viewModelLugar = viewModel(),
         onLugarClick = {},
-        cityIndex = 0,
+
     )
 }
 

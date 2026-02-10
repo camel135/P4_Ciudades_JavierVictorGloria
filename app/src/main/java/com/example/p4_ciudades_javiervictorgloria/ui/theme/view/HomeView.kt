@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -35,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
 
 @Preview(
@@ -45,7 +47,9 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHo
 fun previewApp() {
     HomeView(
         viewModel(),
-        {}
+        viewModelLugar = viewModel(),
+        onNavigateToRandomLugar = {},
+        onNavigateToCiudad = viewModel(),
     )
 }
 
@@ -53,7 +57,9 @@ fun previewApp() {
 @Composable
 fun HomeView(
     viewModelHome: ViewModelHome = viewModel(),
-    onNavigateToCiudad: () -> Unit
+    viewModelLugar: ViewModelLugar,
+    onNavigateToCiudad: () -> Unit,
+    onNavigateToRandomLugar: () -> Unit
 ) {
     // para saber la ciudad actual usando el indice
     val ciudadActual = FuenteDatos.ciudades[viewModelHome.ciudadIndex]
@@ -151,14 +157,17 @@ fun HomeView(
                 // texto ciudad
                 NavigationBarItem(
                     icon = {
-                        Text(
-                            text = stringResource(ciudadActual.name),
-                            style = MaterialTheme.typography.titleLarge
+
+                        Icon(
+                            imageVector = Icons.Default.Refresh,
+                            contentDescription = null
                         )
+
                     },
                     selected = false,
                     onClick = {
-                        onNavigateToCiudad()
+                        viewModelHome.lugarRandom()
+                        onNavigateToRandomLugar()
                     }
                 )
 

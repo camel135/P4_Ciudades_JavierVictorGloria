@@ -51,7 +51,7 @@ fun PreviewCiudadView() {
         viewModel(),
         viewModelLugar= viewModel(),
         onLugarClick = {},
-        cityIndex = 0
+
     )
 }
 
@@ -61,7 +61,7 @@ fun CiudadView(
     viewModelCiudad: ViewModelCiudad = viewModel(),
     viewModelLugar: ViewModelLugar,
     onLugarClick: () -> Unit,
-    cityIndex: Int,
+
 ) {
 
     Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->
