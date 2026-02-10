@@ -121,7 +121,8 @@ fun LugarView(
                         Spacer(modifier = Modifier.height(30.dp))
                         Button(
                             onClick = {
-                                val nombre = context.resources.getString(viewModelLugar.lugarSeleccionado!!.name)
+                                val nombre =
+                                    context.resources.getString(viewModelLugar.lugarSeleccionado!!.name)
                                 val uri = Uri.parse("geo:0,0?q=$nombre")
                                 val intent = Intent(Intent.ACTION_VIEW, uri)
                                 intent.setPackage("com.google.android.apps.maps")
@@ -154,10 +155,7 @@ fun LugarView(
                     }
                 }
             }
-        } else {
-
         }
-
     }
 }
 

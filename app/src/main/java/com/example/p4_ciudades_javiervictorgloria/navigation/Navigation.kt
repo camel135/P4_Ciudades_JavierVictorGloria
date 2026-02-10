@@ -21,7 +21,7 @@ fun navigation() {
 
     val navController = rememberNavController()
     val navLugar: ViewModelLugar = viewModel()
-    val navLugarRandom: ViewModelLugar = viewModel()
+
 
 
     NavHost(
@@ -31,7 +31,7 @@ fun navigation() {
         composable(route = Views.Home.name) {
             HomeView(
                 viewModelHome = viewModel(),
-                viewModelLugar = navLugarRandom,
+                viewModelLugar = navLugar,
                 onNavigateToCiudad = { navController.navigate(Views.Ciudad.name) },
                 onNavigateToRandomLugar = { navController.navigate(Views.Lugar.name) }
             )

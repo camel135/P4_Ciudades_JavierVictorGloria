@@ -12,21 +12,23 @@ import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
 
 class ViewModelLugar : ViewModel() {
-     var lugarSeleccionado by  mutableStateOf<Lugar?>(null) //null para que no haya ningun lugar seleccionado
-         private set
+    var lugarSeleccionado by mutableStateOf<Lugar?>(null) //null para que no haya ningun lugar seleccionado
+        private set
 
 
-
-
-    fun seleccionarLugar(nuevoLugar: Lugar){ //la funcion se llama desde la segunda pantalla al hacer click en una
-        lugarSeleccionado= nuevoLugar
+    fun seleccionarLugar(nuevoLugar: Lugar) { //la funcion se llama desde la segunda pantalla al hacer click en una
+        lugarSeleccionado = nuevoLugar
     }
 
     // se comprueba si estan los datos validos
-    fun datosValidosLugar(): Boolean{
-        return lugarSeleccionado !=null
+    fun datosValidosLugar(): Boolean {
+        return lugarSeleccionado != null
     }
 
+    fun lugarRandom(){
+        val lugarRandom = FuenteDatos.lugares.random()
+          lugarSeleccionado = lugarRandom
 
+    }
 
 }

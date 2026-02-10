@@ -22,9 +22,9 @@ class ViewModelHome : ViewModel() {
         expanded = false
     }
 
-    fun lugarRandom(): Lugar{
+    /*fun lugarRandom(): Lugar{
         return FuenteDatos.lugares.random()
-    }
+    }*/
 
     fun onSunClick() {
 

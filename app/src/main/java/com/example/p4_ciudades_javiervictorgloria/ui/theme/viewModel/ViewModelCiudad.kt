@@ -35,9 +35,7 @@ class ViewModelCiudad : ViewModel() {
             }
         }
 
-
     }
-
 
 
 

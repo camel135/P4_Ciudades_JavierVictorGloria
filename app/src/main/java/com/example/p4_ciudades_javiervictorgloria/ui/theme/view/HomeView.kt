@@ -166,7 +166,7 @@ fun HomeView(
                     },
                     selected = false,
                     onClick = {
-                        viewModelHome.lugarRandom()
+                        viewModelLugar.lugarRandom()
                         onNavigateToRandomLugar()
                     }
                 )
