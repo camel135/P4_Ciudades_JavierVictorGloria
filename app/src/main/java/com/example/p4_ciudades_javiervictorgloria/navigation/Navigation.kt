@@ -9,6 +9,9 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.LugarView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
+
 
 enum class Views {
     Home,
@@ -18,11 +21,12 @@ enum class Views {
 
 @Composable
 fun navigation() {
-
     val navController = rememberNavController()
-    val navLugar: ViewModelLugar = viewModel()
 
-
+    // creamos los ViewModels UNA SOLA VEZ para compartirlos entre pantallas
+    val viewModelHome: ViewModelHome = viewModel()
+    val viewModelCiudad: ViewModelCiudad = viewModel()
+    val viewModelLugar: ViewModelLugar = viewModel()
 
     NavHost(
         navController = navController,
@@ -30,24 +34,31 @@ fun navigation() {
     ) {
         composable(route = Views.Home.name) {
             HomeView(
-                viewModelHome = viewModel(),
-                viewModelLugar = navLugar,
-                onNavigateToCiudad = { navController.navigate(Views.Ciudad.name) },
-                onNavigateToRandomLugar = { navController.navigate(Views.Lugar.name) }
+                viewModelHome = viewModelHome,
+                viewModelLugar = viewModelLugar,
+                onNavigateToCiudad = {
+                    // antes de navegar acutalizar el ViewModelCiudad con la ciudad actual
+                    viewModelCiudad.actualizarCiudad(viewModelHome.ciudadIndex)
+                    navController.navigate(Views.Ciudad.name)
+                },
+                onNavigateToRandomLugar = {
+                    navController.navigate(Views.Lugar.name)
+                }
             )
         }
 
         composable(route = Views.Ciudad.name) {
             CiudadView(
-                viewModelCiudad = viewModel(),
-                viewModelLugar = navLugar,
-                onLugarClick = { navController.navigate(Views.Lugar.name) },
-
+                viewModelCiudad = viewModelCiudad,
+                viewModelLugar = viewModelLugar,
+                onLugarClick = {
+                    navController.navigate(Views.Lugar.name)
+                }
             )
         }
 
         composable(route = Views.Lugar.name) {
-            LugarView(viewModelLugar = navLugar)
+            LugarView(viewModelLugar = viewModelLugar)
         }
     }
 }

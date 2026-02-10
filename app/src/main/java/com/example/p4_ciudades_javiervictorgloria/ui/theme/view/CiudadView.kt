@@ -58,7 +58,7 @@ fun PreviewCiudadView() {
 
 @Composable
 fun CiudadView(
-    viewModelCiudad: ViewModelCiudad = viewModel(),
+    viewModelCiudad: ViewModelCiudad,
     viewModelLugar: ViewModelLugar,
     onLugarClick: () -> Unit,
 

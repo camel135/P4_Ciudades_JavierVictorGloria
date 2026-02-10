@@ -7,10 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.Navigation
 import com.example.p4_ciudades_javiervictorgloria.navigation.navigation
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.P4_Ciudades_JavierVictorGloriaTheme
-import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +26,11 @@ class MainActivity : ComponentActivity() {
     showBackground = true,
     showSystemUi = true
 )
-@Composable
-fun previewApp(){
-    CiudadView(
-        viewModel(),
-        viewModelLugar = viewModel(),
-        onLugarClick = {},
 
-    )
+@Composable
+fun PreviewApp(){
+    P4_Ciudades_JavierVictorGloriaTheme() {
+        navigation()
+    }
 }
 

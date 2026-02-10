@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -24,7 +25,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -44,12 +45,12 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLu
     showSystemUi = true
 )
 @Composable
-fun previewApp() {
+fun PreviewApp() {
     HomeView(
         viewModel(),
         viewModelLugar = viewModel(),
         onNavigateToRandomLugar = {},
-        onNavigateToCiudad = viewModel(),
+        onNavigateToCiudad = {},
     )
 }
 
@@ -61,18 +62,11 @@ fun HomeView(
     onNavigateToCiudad: () -> Unit,
     onNavigateToRandomLugar: () -> Unit
 ) {
-    // para saber la ciudad actual usando el indice
     val ciudadActual = FuenteDatos.ciudades[viewModelHome.ciudadIndex]
 
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            // Barra superior
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
             NavigationBar {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -94,53 +88,9 @@ fun HomeView(
                         )
                     }
                 }
-
             }
-
-
-            // Central (el planeta)
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Box(
-                    // Al hacer click en planeta se entra pasa a la pagina
-                    modifier = Modifier
-                        .clickable {
-                            onNavigateToCiudad()
-                        }
-                ) {
-
-//                    Image(
-//                        painter = painterResource(ciudadActual.imagenPlaneta),
-//                        contentDescription = stringResource(ciudadActual.name),
-//                        modifier = Modifier.size(300.dp)
-//                    )
-
-                    Image(
-                        painter = painterResource(ciudadActual.imagen),
-                        contentDescription = stringResource(ciudadActual.name),
-                        modifier = Modifier.size(300.dp)
-                    )
-
-
-                }
-
-                Button(
-                    onClick = { onNavigateToCiudad() }
-                ) {
-                    Text(
-                        text = stringResource(ciudadActual.name),
-                        style = MaterialTheme.typography.titleLarge
-                    )
-                }
-
-
-            }
-            // Para la zona inferior
+        },
+        bottomBar = {
             NavigationBar {
                 NavigationBarItem(
                     icon = {
@@ -154,15 +104,12 @@ fun HomeView(
                         viewModelHome.anteriorCiudad()
                     }
                 )
-                // texto ciudad
                 NavigationBarItem(
                     icon = {
-
                         Icon(
                             imageVector = Icons.Default.Refresh,
-                            contentDescription = null
+                            contentDescription = "Lugar aleatorio"
                         )
-
                     },
                     selected = false,
                     onClick = {
@@ -183,7 +130,36 @@ fun HomeView(
                         viewModelHome.siguienteCiudad()
                     }
                 )
+            }
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(ciudadActual.imagenPlaneta),
+                contentDescription = stringResource(ciudadActual.name),
+                modifier = Modifier
+                    .size(500.dp)
+                    .clickable {
+                        onNavigateToCiudad()
+                    }
+            )
 
+            Button(
+                onClick = {
+                    onNavigateToCiudad()
+                },
+                modifier = Modifier.padding(top = 16.dp)
+            ) {
+                Text(
+                    text = stringResource(ciudadActual.name),
+                    style = MaterialTheme.typography.titleLarge
+                )
             }
         }
     }
@@ -191,9 +167,7 @@ fun HomeView(
 
 @Composable
 fun dropDownMenu(viewModelHome: ViewModelHome) {
-
-    Box() {
-
+    Box {
         IconButton(onClick = { viewModelHome.onDropDownMenuClick() }) {
             Icon(Icons.Default.MoreVert, contentDescription = "More options")
         }
@@ -213,12 +187,3 @@ fun dropDownMenu(viewModelHome: ViewModelHome) {
         }
     }
 }
-
-
-
-
-
-
-
-
-
