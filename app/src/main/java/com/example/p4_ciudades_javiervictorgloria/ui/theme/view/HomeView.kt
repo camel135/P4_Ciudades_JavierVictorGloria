@@ -144,7 +144,7 @@ fun HomeView(
                 painter = painterResource(ciudadActual.imagenPlaneta),
                 contentDescription = stringResource(ciudadActual.name),
                 modifier = Modifier
-                    .size(500.dp)
+                    .size(300.dp)
                     .clickable {
                         onNavigateToCiudad()
                     }
