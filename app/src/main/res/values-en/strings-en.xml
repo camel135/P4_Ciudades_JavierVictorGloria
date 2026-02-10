@@ -63,7 +63,7 @@
     <string name="front_de_mer">Front de Mer</string>
     <string name="desc_front_mer">Seaside promenade perfect for walks and enjoying the sea breeze.</string>
 
-    <string name="palacio_bey">Bey's Palace</string>
+    <string name="palacio_bey">Bey\'s Palace</string>
     <string name="desc_palacio_bey">Historic residence showcasing the elegance of Islamic art.</string>
 
     <string name="museo_cafe">Coffee Museum</string>
@@ -94,7 +94,7 @@
     <string name="desc_temple">Vibrant night market with street food and souvenirs.</string>
 
     <string name="avenue_stars">Avenue of Stars</string>
-    <string name="desc_avenue_stars">Homage to Hong Kong cinema with statues like Bruce Lee's.</string>
+    <string name="desc_avenue_stars">Homage to Hong Kong cinema with statues like Bruce Lee\'s.</string>
 
     <!-- Categories -->
     <string name="todo_lugar">All</string>

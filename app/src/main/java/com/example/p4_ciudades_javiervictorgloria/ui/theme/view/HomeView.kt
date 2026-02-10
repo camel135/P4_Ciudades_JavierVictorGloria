@@ -33,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
-import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 
 
@@ -107,12 +106,25 @@ fun HomeView(
                             onNavigateToCiudad()
                         }
                 ) {
+
+//                    Image(
+//                        painter = painterResource(ciudadActual.imagenPlaneta),
+//                        contentDescription = stringResource(ciudadActual.name),
+//                        modifier = Modifier.size(300.dp)
+//                    )
+
                     Image(
-                        painter = painterResource(ciudadActual.imagenPlaneta),
+                        painter = painterResource(ciudadActual.imagen),
                         contentDescription = stringResource(ciudadActual.name),
                         modifier = Modifier.size(300.dp)
                     )
+
+
                 }
+                Text(
+                    text = stringResource(ciudadActual.name),
+                    style = MaterialTheme.typography.titleLarge
+                )
             }
             // Para la zona inferior
             NavigationBar {
@@ -159,6 +171,7 @@ fun HomeView(
         }
     }
 }
+
 @Composable
 fun dropDownMenu(viewModelHome: ViewModelHome) {
 
