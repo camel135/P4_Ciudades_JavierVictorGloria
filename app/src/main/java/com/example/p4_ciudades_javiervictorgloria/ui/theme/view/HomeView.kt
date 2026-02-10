@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -121,10 +122,17 @@ fun HomeView(
 
 
                 }
-                Text(
-                    text = stringResource(ciudadActual.name),
-                    style = MaterialTheme.typography.titleLarge
-                )
+
+                Button(
+                    onClick = { onNavigateToCiudad() }
+                ) {
+                    Text(
+                        text = stringResource(ciudadActual.name),
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                }
+
+
             }
             // Para la zona inferior
             NavigationBar {
