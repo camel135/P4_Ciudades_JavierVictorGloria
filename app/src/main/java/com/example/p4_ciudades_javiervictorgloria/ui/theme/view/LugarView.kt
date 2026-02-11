@@ -2,6 +2,7 @@ package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -53,8 +54,10 @@ fun LugarView(
 ) {
 
     val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background
     ) { paddingValues ->
         if (viewModelLugar.lugarSeleccionado != null) {
@@ -62,7 +65,7 @@ fun LugarView(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(scrollState)
             ) {
 
                 Card(
@@ -116,7 +119,8 @@ fun LugarView(
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurface,
                             fontWeight = FontWeight.Medium,
-                            lineHeight = 24.sp
+                            lineHeight = 24.sp,
+
                         )
 
                         Spacer(modifier = Modifier.height(30.dp))
@@ -146,6 +150,8 @@ fun LugarView(
                                 fontWeight = FontWeight.Bold
                             )
                         }
+
+                        Spacer(modifier= Modifier.height(50.dp))
 
                     }
 
