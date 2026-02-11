@@ -91,7 +91,10 @@ fun HomeView(
                     }
                     IconButton(onClick = { viewModelHome.onSunClick() }) {
                         Icon(
-                            imageVector = if (viewModelHome.darkMode) Icons.Default.Settings else Icons.Default.Settings,
+                            painter = painterResource(
+                                id= if(viewModelHome.darkMode) R.drawable.outline_brightness_6_24
+                                else R.drawable.outline_brightness_6_24
+                            ),
                             contentDescription = "Tema",
                             tint = MaterialTheme.colorScheme.primary
                         )
