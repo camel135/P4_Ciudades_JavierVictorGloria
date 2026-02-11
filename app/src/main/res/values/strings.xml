@@ -21,79 +21,79 @@
 
     //Lugares
     <string name="markthal">Markthal</string>
-    <string name="desc_markthal">Un mercado cubierto icónico con un mural gigante y puestos de comida fresca.</string>
+    <string name="desc_markthal">Un mercado cubierto icónico donde la arquitectura moderna se mezcla con la tradición. Bajo su mural gigante podrás degustar platos de todo el mundo en sus numerosos puestos de comida fresca y restaurantes gourmet especializados en gastronomía holandesa e internacional.</string>
 
     <string name="casas_cubo">Casas Cubo</string>
-    <string name="desc_casas_cubo">Viviendas innovadoras inclinadas 45 grados diseñadas por Piet Blom.</string>
+    <string name="desc_casas_cubo">Diseñadas por el arquitecto Piet Blom, estas viviendas innovadoras están inclinadas 45 grados para optimizar el espacio urbano. Representan un concepto de \"bosque urbano\" donde cada casa es un árbol y el conjunto forma una estructura vanguardista única en el mundo.</string>
 
     <string name="puente_erasmo">Puente de Erasmo</string>
-    <string name="desc_puente_erasmo">Impresionante puente atirantado conocido como "El Cisne".</string>
+    <string name="desc_puente_erasmo">Impresionante puente atirantado conocido popularmente como \"El Cisne\" debido a la elegante forma de su pilar de acero blanco. Conecta el norte y el sur de la ciudad, ofreciendo una de las siluetas más reconocibles y modernas del horizonte de Rotterdam.</string>
 
     <string name="euromast">Euromast</string>
-    <string name="desc_euromast">Torre de observación con las mejores vistas panorámicas de la ciudad.</string>
+    <string name="desc_euromast">Esta torre de observación es la estructura más alta de la ciudad. Ofrece las mejores vistas panorámicas de 360 grados sobre el puerto y los alrededores, contando además con un restaurante de lujo situado en las alturas para una experiencia gastronómica inolvidable</string>
 
     <string name="zoo_rotterdam">Zoo de Rotterdam</string>
-    <string name="desc_zoo">Uno de los zoológicos más antiguos y bellos de los Países Bajos.</string>
+    <string name="desc_zoo">Diergaarde Blijdorp es uno de los zoológicos más antiguos y bellos de los Países Bajos. Destaca su Oceanium, un túnel submarino espectacular donde puedes caminar rodeado de tiburones, rayas y tortugas marinas en un entorno educativo y fascinante.</string>
 
     <string name="playa_getares">Playa de Getares</string>
-    <string name="desc_getares">Playa famosa por sus vistas al Estrecho y su ambiente familiar.</string>
+    <string name="desc_getares">Una playa semiurbana famosa por sus vistas privilegiadas al Estrecho de Gibraltar y su ambiente familiar. Sus aguas cristalinas y su paseo marítimo lleno de vida la convierten en el lugar perfecto para disfrutar del sol y la brisa marina andaluza.</string>
 
     <string name="plaza_alta">Plaza Alta</string>
-    <string name="desc_plaza_alta">El corazón de la ciudad, decorada con azulejos típicos andaluces.</string>
+    <string name="desc_plaza_alta">El auténtico corazón de la ciudad, decorada con azulejos típicos andaluces de colores vibrantes y una fuente central histórica. Es el punto de encuentro social por excelencia, rodeado de edificios emblemáticos y palmeras que invitan a descansar a la sombra.</string>
 
     <string name="parque_cristina">Parque María Cristina</string>
-    <string name="desc_parque">Un oasis de tranquilidad con jardines históricos en el centro.</string>
+    <string name="desc_parque">Un oasis de tranquilidad con jardines históricos situados en pleno centro urbano. Inaugurado en el siglo XIX, cuenta con paseos sombreados, bustos de personajes ilustres y una glorieta central que proporciona un refugio de paz y frescura.</string>
 
     <string name="puerto_algeciras">Puerto de Algeciras</string>
-    <string name="desc_puerto">Uno de los puertos comerciales más importantes de Europa.</string>
+    <string name="desc_puerto">Uno de los puertos comerciales y de pasajeros más importantes de Europa y del Mediterráneo. Su magnitud es impresionante, siendo un motor económico clave donde el tráfico constante de buques y cargueros crea un paisaje industrial fascinante y dinámico.</string>
 
     <string name="mercado_abastos">Mercado de Abastos</string>
-    <string name="desc_mercado">Obra maestra de ingeniería de Eduardo Torroja.</string>
+    <string name="desc_mercado">Obra maestra de ingeniería diseñada por Eduardo Torroja. Su espectacular cúpula laminar, que en su día fue la mayor del mundo sin soportes internos, alberga hoy los puestos más tradicionales de productos frescos locales en un entorno arquitectónico único.</string>
 
     <string name="fuerte_santa_cruz">Fuerte de Santa Cruz</string>
-    <string name="desc_santa_cruz">Fuerte histórico con vistas espectaculares al puerto y la ciudad.</string>
+    <string name="desc_santa_cruz">Este fuerte histórico construido por los españoles se eleva majestuosamente sobre el monte Murdjadjo. Ofrece vistas espectaculares y estratégicas al puerto y a toda la ciudad, siendo un testimonio vivo del pasado militar y cultural de Orán.</string>
 
     <string name="mezquita_pasha">Mezquita de Hassan Pasha</string>
-    <string name="desc_mezquita">Una joya arquitectónica del periodo otomano.</string>
+    <string name="desc_mezquita">Una verdadera joya arquitectónica del periodo otomano construida en 1796. Destaca por su minarete octogonal decorado con azulejos y su elegante patio interior, reflejando la riqueza del arte islámico y la historia de la región.</string>
 
     <string name="catedral_oran">Catedral del Sagrado Corazón</string>
-    <string name="desc_catedral">Antigua catedral convertida en biblioteca con estilo bizantino.</string>
+    <string name="desc_catedral">Antigua catedral católica de estilo neobizantino convertida hoy en una impresionante biblioteca pública. Sus relieves detallados y su gran estructura la convierten en uno de los edificios más emblemáticos y fotogénicos de la ciudad.</string>
 
     <string name="front_de_mer">Front de Mer</string>
-    <string name="desc_front_mer">Paseo marítimo ideal para caminar y disfrutar de la brisa marina.</string>
+    <string name="desc_front_mer">El emblemático paseo marítimo de Orán, ideal para caminar y disfrutar de la brisa mediterránea. Está bordeado por edificios coloniales franceses y numerosas terrazas donde los locales se reúnen para contemplar el mar al atardecer.</string>
 
     <string name="palacio_bey">Palacio del Bey</string>
-    <string name="desc_palacio_bey">Residencia histórica que muestra la elegancia del arte islámico.</string>
+    <string name="desc_palacio_bey">Residencia histórica que muestra la elegancia y el refinamiento del arte islámico. Sus patios, pabellones y jardines transportan al visitante a la época del Beylicato de Orán, ofreciendo un recorrido lleno de detalles arquitectónicos fascinantes.</string>
 
     <string name="museo_cafe">Museo del Café</string>
-    <string name="desc_museo_cafe">Ubicado en la antigua Bolsa del Café, narra la historia del grano en Brasil.</string>
+    <string name="desc_museo_cafe">Ubicado en el lujoso edificio de la antigua Bolsa del Café, este museo narra la importancia global de este grano para el desarrollo de Brasil. Es un lugar lleno de historia donde el aroma del café y la arquitectura de mármol se fusionan.</string>
 
     <string name="jardin_playa">Jardines de la Playa</string>
-    <string name="desc_jardin_santos">El jardín frontal de playa más largo del mundo según el Guinness.</string>
+    <string name="desc_jardin_santos">Ostenta el récord Guinness de ser el jardín frontal de playa más largo del mundo. Son 7 kilómetros de césped impecable, flores exóticas y fuentes que separan la ciudad de la arena, proporcionando un espacio verde inmenso junto al Atlántico.</string>
 
     <string name="monte_serrat">Monte Serrat</string>
-    <string name="desc_monte_serrat">Sube en funicular para ver toda la ciudad y el puerto de Santos.</string>
+    <string name="desc_monte_serrat">Accesible mediante un pintoresco funicular histórico, este punto ofrece las mejores vistas de toda la ciudad y el inmenso puerto de Santos. En la cima se encuentra un santuario dedicado a la patrona de la ciudad y un antiguo casino.</string>
 
     <string name="estadio_santos">Estadio Vila Belmiro</string>
-    <string name="desc_estadio">El legendario campo donde Pelé hizo historia con el Santos FC.</string>
+    <string name="desc_estadio">El legendario campo de fútbol donde Pelé hizo historia con el Santos FC. Es un templo para los amantes del deporte, contando con un museo que exhibe los trofeos y la historia dorada de uno de los clubes más famosos de Brasil</string>
 
     <string name="acuario_santos">Acuario de Santos</string>
-    <string name="desc_acuario">El primer acuario municipal de Brasil con cientos de especies.</string>
+    <string name="desc_acuario">El primer acuario municipal de Brasil, que alberga cientos de especies marinas y de agua dulce. Es un centro educativo de referencia donde se pueden ver pingüinos, lobos marinos y una gran variedad de peces en un entorno ideal para familias</string>
 
     <string name="victoria_peak">Victoria Peak</string>
-    <string name="desc_victoria_peak">El punto más alto de la isla con vistas increíbles a los rascacielos.</string>
+    <string name="desc_victoria_peak">El punto más alto de la isla de Hong Kong y su atracción más popular. Ofrece vistas increíbles a los rascacielos del centro financiero y al puerto Victoria, siendo especialmente espectacular durante el anochecer cuando se encienden las luces.</string>
 
     <string name="buda_gigante">Buda Tian Tan</string>
-    <string name="desc_buda">Enorme estatua de bronce situada en las montañas de Lantau.</string>
+    <string name="desc_buda">Una enorme estatua de bronce de 34 metros de altura situada en las tranquilas montañas de la isla de Lantau. Representa la armonía entre el hombre y la naturaleza, y para llegar a su base hay que subir una impresionante escalinata de 268 peldaños.</string>
 
     <string name="star_ferry">Star Ferry</string>
-    <string name="desc_ferry">Cruza el puerto de Victoria en este barco histórico y económico.</string>
+    <string name="desc_ferry">Este histórico servicio de transbordador cruza el puerto de Victoria conectando Kowloon con la isla de Hong Kong. Ofrece una de las travesías más pintorescas y económicas del mundo, permitiendo ver el skyline de la ciudad desde el agua.</string>
 
     <string name="temple_street">Temple Street Night Market</string>
-    <string name="desc_temple">Mercado nocturno vibrante con comida callejera y souvenirs.</string>
+    <string name="desc_temple">Un vibrante mercado nocturno famoso por su ambiente bullicioso, su deliciosa comida callejera y sus numerosos puestos de souvenirs y electrónica. Es el lugar perfecto para experimentar la energía nocturna y la cultura local de Hong Kong.</string>
 
     <string name="avenue_stars">Avenida de las Estrellas</string>
-    <string name="desc_avenue_stars">Homenaje al cine de Hong Kong con estatuas como la de Bruce Lee.</string>
+    <string name="desc_avenue_stars">Homenaje al cine de Hong Kong situado en el paseo marítimo de Tsim Sha Tsui. Incluye estatuas icónicas como la de Bruce Lee y ofrece el mejor sitio para disfrutar del espectáculo diario de luces y sonido de la ciudad.</string>
 
     //HomeView
     <string name="ciudad_anterior">Ciudad Anterior</string>
