@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -72,6 +73,7 @@ fun HomeView(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             NavigationBar {
                 Row(
@@ -89,8 +91,9 @@ fun HomeView(
                     }
                     IconButton(onClick = { viewModelHome.onSunClick() }) {
                         Icon(
-                            imageVector = Icons.Filled.Info,
+                            imageVector = if (viewModelHome.darkMode) Icons.Default.Settings else Icons.Default.Settings,
                             contentDescription = "Tema",
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 }

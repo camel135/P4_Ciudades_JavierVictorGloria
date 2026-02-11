@@ -3,6 +3,7 @@ package com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,6 +14,7 @@ import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 
 
 class ViewModelHome : ViewModel() {
+
     var expanded by mutableStateOf(false)
         private set
 
@@ -41,9 +43,10 @@ class ViewModelHome : ViewModel() {
         expanded = false
     }
 
-
-    fun onSunClick() {
-
+   var darkMode by mutableStateOf(false) //estado del tema
+       private set
+    fun onSunClick() { //funcion que llama cuando se pulsa el icono
+        darkMode = !darkMode
     }
 
     // funcion para la flecha derecha

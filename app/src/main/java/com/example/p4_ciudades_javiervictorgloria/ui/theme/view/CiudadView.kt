@@ -64,7 +64,7 @@ fun CiudadView(
 
 ) {
 
-    Scaffold(containerColor = Color(0xFFF8F0FA)) { paddingValues ->
+    Scaffold(containerColor = MaterialTheme.colorScheme.background) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()

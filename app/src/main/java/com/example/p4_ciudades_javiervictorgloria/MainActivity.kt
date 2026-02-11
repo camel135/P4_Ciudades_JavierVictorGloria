@@ -9,14 +9,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.navigation.navigation
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.P4_Ciudades_JavierVictorGloriaTheme
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            P4_Ciudades_JavierVictorGloriaTheme {
-                navigation()
+            val viewModelHome: ViewModelHome = viewModel()
+            P4_Ciudades_JavierVictorGloriaTheme(
+                darkTheme = viewModelHome.darkMode
+            ) {
+                navigation(viewModelHome)
             }
         }
     }
@@ -26,11 +30,9 @@ class MainActivity : ComponentActivity() {
     showBackground = true,
     showSystemUi = true
 )
-
 @Composable
 fun PreviewApp(){
-    P4_Ciudades_JavierVictorGloriaTheme() {
+    P4_Ciudades_JavierVictorGloriaTheme {
         navigation()
     }
 }
-
