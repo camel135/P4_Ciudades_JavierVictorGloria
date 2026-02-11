@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
 @Preview
@@ -146,7 +147,7 @@ fun LugarView(
 
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
-                                text = "VER UBICACIÓN",
+                                text = stringResource(R.string.ubicacion),
                                 fontWeight = FontWeight.Bold
                             )
 

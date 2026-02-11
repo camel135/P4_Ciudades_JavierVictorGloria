@@ -1,6 +1,8 @@
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.view
 
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,11 +32,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelHome
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
@@ -48,7 +52,7 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLu
 fun PreviewApp() {
     HomeView(
         viewModel(),
-        viewModelLugar = viewModel(),
+
         onNavigateToRandomLugar = {},
         onNavigateToCiudad = {},
     )
@@ -58,11 +62,13 @@ fun PreviewApp() {
 @Composable
 fun HomeView(
     viewModelHome: ViewModelHome = viewModel(),
-    viewModelLugar: ViewModelLugar,
+    viewModelLugar: ViewModelLugar = viewModel(),
     onNavigateToCiudad: () -> Unit,
     onNavigateToRandomLugar: () -> Unit
 ) {
     val ciudadActual = FuenteDatos.ciudades[viewModelHome.ciudadIndex]
+
+
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -96,7 +102,7 @@ fun HomeView(
                     icon = {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Anterior",
+                            contentDescription = stringResource(R.string.ciudad_anterior),
                         )
                     },
                     selected = false,
@@ -108,7 +114,7 @@ fun HomeView(
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Refresh,
-                            contentDescription = "Lugar aleatorio"
+                            contentDescription = stringResource(R.string.lugar_aleatorio)
                         )
                     },
                     selected = false,
@@ -122,7 +128,7 @@ fun HomeView(
                     icon = {
                         Icon(
                             imageVector = Icons.Filled.ArrowForward,
-                            contentDescription = "Siguiente",
+                            contentDescription = stringResource(R.string.ciudad_siguiente),
                         )
                     },
                     selected = false,
@@ -167,9 +173,16 @@ fun HomeView(
 
 @Composable
 fun dropDownMenu(viewModelHome: ViewModelHome) {
+
+    val context = LocalContext.current
+    val intent = Intent(
+        Intent.ACTION_VIEW,
+        Uri.parse("https://github.com/camel135/P4_Ciudades_JavierVictorGloria.git")
+    )
+
     Box {
         IconButton(onClick = { viewModelHome.onDropDownMenuClick() }) {
-            Icon(Icons.Default.MoreVert, contentDescription = "More options")
+            Icon(Icons.Default.MoreVert, contentDescription = stringResource(R.string.mas_opciones))
         }
 
         DropdownMenu(
@@ -177,12 +190,21 @@ fun dropDownMenu(viewModelHome: ViewModelHome) {
             onDismissRequest = { viewModelHome.onDismissMenu() }
         ) {
             DropdownMenuItem(
-                text = { Text("Option 1") },
-                onClick = { viewModelHome.onDismissMenu() }
+                text = { Text(stringResource(R.string.idioma)) },
+                onClick = {
+
+
+                }
             )
+
             DropdownMenuItem(
-                text = { Text("Option 2") },
-                onClick = { viewModelHome.onDismissMenu() }
+                text = { Text(stringResource(R.string.acerca_de)) },
+                onClick = {
+                    context.startActivity(intent)
+
+
+                }
+
             )
         }
     }

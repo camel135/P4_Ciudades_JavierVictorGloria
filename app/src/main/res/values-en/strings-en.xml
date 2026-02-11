@@ -96,6 +96,17 @@
     <string name="avenue_stars">Avenue of Stars</string>
     <string name="desc_avenue_stars">Homage to Hong Kong cinema with statues like Bruce Lee\'s.</string>
 
+    //HomeView
+    <string name="ciudad_anterior">Previous City</string>
+    <string name="ciudad_siguiente">Next City</string>
+    <string name="lugar_aleatorio">Random Place</string>
+    <string name="mas_opciones"> More options</string>
+    <string name="idioma">Español</string>
+    <string name="acerca_de">About</string>
+
+    //LugarView
+    <string name="ubicacion">VIEW LOCATION</string>
+
     <!-- Categories -->
     <string name="todo_lugar">All</string>
     <string name="cafeterias">Cafés</string>

@@ -95,6 +95,16 @@
     <string name="avenue_stars">Avenida de las Estrellas</string>
     <string name="desc_avenue_stars">Homenaje al cine de Hong Kong con estatuas como la de Bruce Lee.</string>
 
+    //HomeView
+    <string name="ciudad_anterior">Ciudad Anterior</string>
+    <string name="ciudad_siguiente">Ciudad siguiente</string>
+    <string name="lugar_aleatorio">Lugar Aleatorio</string>
+    <string name="mas_opciones">Mas opciones</string>
+    <string name="idioma">English</string>
+    <string name="acerca_de">Acerca de</string>
+
+    //LugarView
+    <string name="ubicacion">VER UBICACIÓN</string>
 
     //Categorias
     <string name="todo_lugar">Todo</string>
