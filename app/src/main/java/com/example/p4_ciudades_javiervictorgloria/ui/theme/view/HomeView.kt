@@ -19,7 +19,7 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -75,24 +75,27 @@ fun HomeView(
         modifier = Modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            NavigationBar {
+            NavigationBar(
+                containerColor = MaterialTheme.colorScheme.background,
+            ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     dropDownMenu(viewModelHome)
-
+                    /**
                     IconButton(onClick = {}) {
-                        Icon(
-                            imageVector = Icons.Filled.Info,
-                            contentDescription = "Info",
-                        )
+                    Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = "Info",
+                    )
                     }
+                     **/
                     IconButton(onClick = { viewModelHome.onSunClick() }) {
                         Icon(
                             painter = painterResource(
-                                id= if(viewModelHome.darkMode) R.drawable.outline_brightness_6_24
+                                id = if (viewModelHome.darkMode) R.drawable.outline_brightness_6_24
                                 else R.drawable.outline_brightness_6_24
                             ),
                             contentDescription = "Tema",
@@ -103,7 +106,9 @@ fun HomeView(
             }
         },
         bottomBar = {
-            NavigationBar {
+            NavigationBar(
+                containerColor = MaterialTheme.colorScheme.background,
+            ) {
                 NavigationBarItem(
                     icon = {
                         Icon(
@@ -198,21 +203,37 @@ fun dropDownMenu(viewModelHome: ViewModelHome) {
             onDismissRequest = { viewModelHome.onDismissMenu() }
         ) {
             DropdownMenuItem(
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = stringResource(R.string.compartir),
+                    )
+                },
                 text = { Text(stringResource(R.string.compartir)) },
                 onClick = {
 
                     val sendIntent = Intent().apply {
                         action = Intent.ACTION_SEND
-                        putExtra(Intent.EXTRA_TEXT, "¡Mira esta app de ciudades! https://github.com/camel135/...")
+                        putExtra(
+                            Intent.EXTRA_TEXT,
+                            "¡Mira esta app de ciudades! https://github.com/camel135/..."
+                        )
                         type = "text/plain"
                     }
                     val shareIntent = Intent.createChooser(sendIntent, null)
                     context.startActivity(shareIntent)
                     viewModelHome.onDismissMenu()
                 }
+
             )
 
             DropdownMenuItem(
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = stringResource(R.string.acerca_de),
+                    )
+                },
                 text = { Text(stringResource(R.string.acerca_de)) },
                 onClick = {
                     context.startActivity(intent)
