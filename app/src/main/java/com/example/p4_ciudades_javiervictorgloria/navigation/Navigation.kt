@@ -28,6 +28,7 @@ fun navigation(viewModelHome: ViewModelHome= viewModel()) {
     val viewModelCiudad: ViewModelCiudad = viewModel()
     val viewModelLugar: ViewModelLugar = viewModel()
 
+
     NavHost(
         navController = navController,
         startDestination = Views.Home.name,
