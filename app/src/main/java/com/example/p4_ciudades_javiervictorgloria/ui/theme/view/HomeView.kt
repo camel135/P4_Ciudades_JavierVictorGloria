@@ -198,10 +198,17 @@ fun dropDownMenu(viewModelHome: ViewModelHome) {
             onDismissRequest = { viewModelHome.onDismissMenu() }
         ) {
             DropdownMenuItem(
-                text = { Text(stringResource(R.string.idioma)) },
+                text = { Text(stringResource(R.string.compartir)) },
                 onClick = {
 
-
+                    val sendIntent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, "¡Mira esta app de ciudades! https://github.com/camel135/...")
+                        type = "text/plain"
+                    }
+                    val shareIntent = Intent.createChooser(sendIntent, null)
+                    context.startActivity(shareIntent)
+                    viewModelHome.onDismissMenu()
                 }
             )
 
@@ -209,7 +216,7 @@ fun dropDownMenu(viewModelHome: ViewModelHome) {
                 text = { Text(stringResource(R.string.acerca_de)) },
                 onClick = {
                     context.startActivity(intent)
-
+                    viewModelHome.onDismissMenu()
                 }
 
             )

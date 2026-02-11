@@ -1,15 +1,10 @@
 package com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.runtime.Composable
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.intl.Locale
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 
@@ -25,8 +20,6 @@ class ViewModelHome : ViewModel() {
 
 
 
-
-
     fun onDropDownMenuClick() {
         expanded = !expanded
 
@@ -36,8 +29,9 @@ class ViewModelHome : ViewModel() {
         expanded = false
     }
 
-   var darkMode by mutableStateOf(false) //estado del tema
-       private set
+    var darkMode by mutableStateOf(false) //estado del tema
+        private set
+
     fun onSunClick() { //funcion que llama cuando se pulsa el icono
         darkMode = !darkMode
     }
