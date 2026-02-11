@@ -131,32 +131,28 @@ fun LugarView(
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(60.dp),
-                            shape = RoundedCornerShape(24.dp),
+                                .height(56.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                contentColor = MaterialTheme.colorScheme.onPrimary
                             )
 
                         ) {
-                            Icon(
-                                imageVector = Icons.Default.LocationOn,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.secondary
-                            )
-
-                            Spacer(modifier = Modifier.width(10.dp))
+                            Icon(Icons.Default.LocationOn, contentDescription = null)
+                            Spacer(Modifier.width(8.dp))
                             Text(
                                 text = stringResource(R.string.ubicacion),
                                 fontWeight = FontWeight.Bold
                             )
-
                         }
 
                     }
+
                 }
             }
         }
     }
 }
+
 

@@ -13,32 +13,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFFD0BCFF),
-    secondary = Color(0xFFCCC2DC),
-    tertiary = Color(0xFFEFB8C8),
-    background = Color(0xFF31284D),
-    surface = Color(0xFF1C1B1F)
+    primary = PaleSage,
+    onPrimary = Color(0xFF0D1A12),
+    primaryContainer = ForestGreen,
+    onPrimaryContainer = Color.White,
+    secondary = SageOlive,
+    background = DeepJungle,
+    surface = Color(0xFF16251C),
+    onSurface = PaleSage,
+    surfaceVariant = Color(0xFF2A3B2F)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF9C27B0),
+    primary = ForestGreen,
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFF3E5F5),
-    onPrimaryContainer = Color(0xFF7B1FA2),
-    secondary = Color(0xFFE91E63),
-    background = Color(0xFF896293),
+    primaryContainer = Color(0xFFDDE5C1),
+    onPrimaryContainer = Color(0xFF1B3022),
+    secondary = SageOlive,
+    tertiary = WarmTerracotta,
+    background = SoftCream,
     surface = Color.White,
-    onSurface = Color(0xFF1C1B1F)
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    onSurface = DarkLeaf,
+    surfaceVariant = Color(0xFFE9EDD9) // Color para las tarjetas (Cards)
 )
 
 @Composable

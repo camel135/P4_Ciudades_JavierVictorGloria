@@ -167,7 +167,9 @@ fun HomeView(
             ) {
                 Text(
                     text = stringResource(ciudadActual.name),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.background
+
                 )
             }
         }
@@ -204,7 +206,6 @@ fun dropDownMenu(viewModelHome: ViewModelHome) {
                 text = { Text(stringResource(R.string.acerca_de)) },
                 onClick = {
                     context.startActivity(intent)
-
 
                 }
 

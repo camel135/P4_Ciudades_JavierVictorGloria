@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.ViewModel
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 
@@ -23,15 +24,7 @@ class ViewModelHome : ViewModel() {
 
 
 
-    @Composable
-    fun toGithub() {
-        val context = LocalContext.current
-        val intent = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse("https://github.com/camel135/P4_Ciudades_JavierVictorGloria.git")
-        )
-        context.startActivity(intent)
-    }
+
 
 
     fun onDropDownMenuClick() {

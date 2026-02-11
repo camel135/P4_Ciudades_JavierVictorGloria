@@ -49,10 +49,10 @@ import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLu
 fun PreviewCiudadView() {
     CiudadView(
         viewModel(),
-        viewModelLugar= viewModel(),
+        viewModelLugar = viewModel(),
         onLugarClick = {},
 
-    )
+        )
 }
 
 
@@ -62,7 +62,7 @@ fun CiudadView(
     viewModelLugar: ViewModelLugar,
     onLugarClick: () -> Unit,
 
-) {
+    ) {
 
     Scaffold(containerColor = MaterialTheme.colorScheme.background) { paddingValues ->
         Column(
@@ -78,7 +78,7 @@ fun CiudadView(
                 Text(
                     text = stringResource(id = viewModelCiudad.ciudadSeleccionada.name),
                     style = MaterialTheme.typography.headlineMedium,
-                    color = Color(0xFF7B1FA2)
+                    color = MaterialTheme.colorScheme.primary
                 )
 
                 Text(
@@ -145,19 +145,16 @@ fun ItemCarrusel(
     onClick: () -> Unit
 ) {
     Surface(
-        modifier = Modifier
-            .size(60.dp)
-            .clickable { onClick() },
+        modifier = Modifier.size(60.dp).clickable { onClick() },
         shape = CircleShape,
-        //si se selcciona brilla morado
-        color = if (isSelected) Color(0xFF9C27B0) else Color.White,
-        shadowElevation = 4.dp
+        color = if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
+        shadowElevation = 2.dp
     ) {
         Icon(
             painter = painterResource(id = idIcono),
             contentDescription = null,
-            modifier = Modifier.padding(8.dp),
-            tint = if (isSelected) Color.White else Color(0xFF9C27B0)
+            modifier = Modifier.padding(12.dp),
+            tint = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 
@@ -170,15 +167,13 @@ fun CardLugar(
     onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable{onClick()},
-        shape = RoundedCornerShape(26.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(243, 229, 245, 255)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        modifier = Modifier.fillMaxWidth().clickable { onClick() },
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+        )
 
-
-    ) {
+        ) {
         Row(
             modifier = Modifier.padding(18.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -200,7 +195,8 @@ fun CardLugar(
                 Text(
                     text = stringResource(id = lugar.name),
                     style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
                 )
 
                 Text(
