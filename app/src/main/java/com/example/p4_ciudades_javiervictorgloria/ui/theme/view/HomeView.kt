@@ -84,21 +84,14 @@ fun HomeView(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     dropDownMenu(viewModelHome)
-                    /**
-                    IconButton(onClick = {}) {
-                    Icon(
-                    imageVector = Icons.Filled.Info,
-                    contentDescription = "Info",
-                    )
-                    }
-                     **/
+
                     IconButton(onClick = { viewModelHome.onSunClick() }) {
                         Icon(
                             painter = painterResource(
                                 id = if (viewModelHome.darkMode) R.drawable.outline_brightness_6_24
                                 else R.drawable.outline_brightness_6_24
                             ),
-                            contentDescription = "Tema",
+                            contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }

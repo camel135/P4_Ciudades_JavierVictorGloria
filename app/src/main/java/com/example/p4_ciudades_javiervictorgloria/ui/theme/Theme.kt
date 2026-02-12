@@ -34,13 +34,13 @@ private val LightColorScheme = lightColorScheme(
     background = SoftCream,
     surface = Color.White,
     onSurface = DarkLeaf,
-    surfaceVariant = Color(0xFFE9EDD9) // Color para las tarjetas (Cards)
+    surfaceVariant = Color(0xFFE9EDD9)
 )
 
 @Composable
 fun P4_Ciudades_JavierVictorGloriaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
+
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {

@@ -9,6 +9,5 @@ data class Ciudad(
     @StringRes val continente: Int,
     @DrawableRes val imagen: Int,
     @DrawableRes val imagenPlaneta: Int
-    //coordenadas
 
 )

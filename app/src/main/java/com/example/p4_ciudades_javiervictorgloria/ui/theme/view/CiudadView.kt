@@ -206,7 +206,6 @@ fun CiudadView(
 @Composable
 fun ItemCarrusel(
     idIcono: Int,
-    //label: String,
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
@@ -285,10 +284,7 @@ fun CardLugar(
                 )
             }
 
-            /*Text(
-                text = stringResource(id = lugar.name),
-                style= MaterialTheme.typography.titleLarge
-            )*/
+
         }
     }
 }

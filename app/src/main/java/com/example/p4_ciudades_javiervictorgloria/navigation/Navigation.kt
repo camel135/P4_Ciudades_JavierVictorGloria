@@ -28,8 +28,7 @@ fun navigation(
 ) {
     val navController = rememberNavController()
 
-    // creamos los ViewModels UNA SOLA VEZ para compartirlos entre pantallas
-    //val viewModelHome: ViewModelHome = viewModel()
+
     val viewModelCiudad: ViewModelCiudad = viewModel()
     val viewModelLugar: ViewModelLugar = viewModel()
 
