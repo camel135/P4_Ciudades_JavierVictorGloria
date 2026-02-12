@@ -40,6 +40,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.p4_ciudades_javiervictorgloria.R
 import com.example.p4_ciudades_javiervictorgloria.data.FuenteDatos
 import com.example.p4_ciudades_javiervictorgloria.model.Lugar
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.utils.EstadoPantalla
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelCiudad
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.viewModel.ViewModelLugar
 
@@ -51,8 +52,8 @@ fun PreviewCiudadView() {
         viewModel(),
         viewModelLugar = viewModel(),
         onLugarClick = {},
-
-        )
+        estadoPantalla = EstadoPantalla.HORIZONTAL,
+    )
 }
 
 
@@ -61,78 +62,143 @@ fun CiudadView(
     viewModelCiudad: ViewModelCiudad,
     viewModelLugar: ViewModelLugar,
     onLugarClick: () -> Unit,
-
-    ) {
+    estadoPantalla: EstadoPantalla = EstadoPantalla.VERTICAL
+) {
 
     Scaffold(containerColor = MaterialTheme.colorScheme.background) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) {
+        if (estadoPantalla == EstadoPantalla.VERTICAL) {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp)
+                    .fillMaxSize()
+                    .padding(paddingValues)
             ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp)
+                ) {
+                    Text(
+                        text = stringResource(id = viewModelCiudad.ciudadSeleccionada.name),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+
+                    Text(
+                        text = stringResource(R.string.descubre_lugares_preciosos),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.Gray
+                    )
+                }
+                //carrusel
                 Text(
-                    text = stringResource(id = viewModelCiudad.ciudadSeleccionada.name),
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.primary
+                    text = stringResource(R.string.puntos_interes),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    color = Color.Blue,
+                    modifier = Modifier.padding(start = 15.dp, top = 15.dp, bottom = 7.dp)
+
                 )
 
-                Text(
-                    text = stringResource(R.string.descubre_lugares_preciosos),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Gray
-                )
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 6.dp),
+                    contentPadding = PaddingValues(horizontal = 22.dp),
+                    horizontalArrangement = Arrangement.spacedBy(30.dp)
+                ) {
+                    //aqui se usa la lista de pair
+                    items(FuenteDatos.categoriasOpciones) { (idTexto, idIcono) ->
+                        ItemCarrusel(
+                            idIcono = idIcono,
+                            isSelected = viewModelCiudad.categoriaSeleccionada == idTexto,
+                            onClick = { viewModelCiudad.actualizarCategoria(idTexto) }
+                        )
+                    }
+
+                }
+
+                //lista lugares
+
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(15.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp)
+                ) {
+                    items(viewModelCiudad.lugarFiltrado()) { lugar ->
+                        CardLugar(
+                            lugar,
+                            onClick = {
+                                viewModelLugar.seleccionarLugar(lugar)
+                                onLugarClick()
+                            },
+                        )
+                    }
+                }
             }
-            //carrusel
-            Text(
-                text = stringResource(R.string.puntos_interes),
-                style = MaterialTheme.typography.titleMedium,
-                fontFamily = FontFamily.SansSerif,
-                color = Color.Blue,
-                modifier = Modifier.padding(start = 15.dp, top = 15.dp, bottom = 7.dp)
 
-            )
-
-            LazyRow(
+        } else {
+            Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 6.dp),
-                contentPadding = PaddingValues(horizontal = 22.dp),
-                horizontalArrangement = Arrangement.spacedBy(30.dp)
+                    .fillMaxSize()
+                    .padding(paddingValues)
             ) {
-                //aqui se usa la lista de pair
-                items(FuenteDatos.categoriasOpciones) { (idTexto, idIcono) ->
-                    ItemCarrusel(
-                        idIcono = idIcono,
-                        isSelected = viewModelCiudad.categoriaSeleccionada == idTexto,
-                        onClick = { viewModelCiudad.actualizarCategoria(idTexto) }
+
+                Column(
+                    modifier = Modifier
+                        .weight(1.5f)
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = stringResource(id = viewModelCiudad.ciudadSeleccionada.name),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
                     )
+
+                    Text(
+                        text = stringResource(R.string.puntos_interes),
+                        style = MaterialTheme.typography.titleSmall,
+                        color = Color.Blue,
+                        modifier = Modifier.padding(start = 12.dp, bottom = 8.dp)
+                    )
+
+                    LazyColumn (
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        items(FuenteDatos.categoriasOpciones) { (idTexto, idIcono) ->
+                            ItemCarrusel(
+                                idIcono = idIcono,
+                                isSelected = viewModelCiudad.categoriaSeleccionada == idTexto,
+                                onClick = { viewModelCiudad.actualizarCategoria(idTexto) }
+                            )
+                        }
+                    }
                 }
 
-            }
 
-            //lista lugares
-
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(15.dp),
-                verticalArrangement = Arrangement.spacedBy(14.dp)
-            ) {
-                items(viewModelCiudad.lugarFiltrado()) { lugar ->
-                    CardLugar(
-                        lugar,
-                        onClick = {
-                            viewModelLugar.seleccionarLugar(lugar)
-                            onLugarClick()
-                        },
-                    )
+                LazyColumn(
+                    modifier = Modifier
+                        .weight(4f)
+                        .fillMaxSize(),
+                    contentPadding = PaddingValues(15.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp)
+                ) {
+                    items(viewModelCiudad.lugarFiltrado()) { lugar ->
+                        CardLugar(
+                            lugar = lugar,
+                            onClick = {
+                                viewModelLugar.seleccionarLugar(lugar)
+                                onLugarClick()
+                            }
+                        )
+                    }
                 }
             }
+
         }
+
     }
 
 }
@@ -145,7 +211,11 @@ fun ItemCarrusel(
     onClick: () -> Unit
 ) {
     Surface(
-        modifier = Modifier.size(60.dp).clickable { onClick() },
+        modifier = Modifier
+            .size(60.dp)
+            .clickable { onClick() }
+            .padding(top = 8.dp),
+
         shape = CircleShape,
         color = if (isSelected) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
         shadowElevation = 2.dp
@@ -167,13 +237,15 @@ fun CardLugar(
     onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxWidth().clickable { onClick() },
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
         )
 
-        ) {
+    ) {
         Row(
             modifier = Modifier.padding(18.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -220,4 +292,6 @@ fun CardLugar(
         }
     }
 }
+
+
 

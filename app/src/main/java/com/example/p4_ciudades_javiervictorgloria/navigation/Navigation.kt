@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.p4_ciudades_javiervictorgloria.ui.theme.utils.EstadoPantalla
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.CiudadView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.HomeView
 import com.example.p4_ciudades_javiervictorgloria.ui.theme.view.LugarView
@@ -21,7 +22,10 @@ enum class Views {
 }
 
 @Composable
-fun navigation(viewModelHome: ViewModelHome= viewModel()) {
+fun navigation(
+    viewModelHome: ViewModelHome= viewModel(),
+    estadoPantalla: EstadoPantalla
+) {
     val navController = rememberNavController()
 
     // creamos los ViewModels UNA SOLA VEZ para compartirlos entre pantallas
@@ -55,7 +59,8 @@ fun navigation(viewModelHome: ViewModelHome= viewModel()) {
                 viewModelLugar = viewModelLugar,
                 onLugarClick = {
                     navController.navigate(Views.Lugar.name)
-                }
+                },
+                estadoPantalla = estadoPantalla,
             )
         }
 
